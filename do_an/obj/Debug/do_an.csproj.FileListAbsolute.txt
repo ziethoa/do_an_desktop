@@ -11,3 +11,16 @@ C:\Users\HOA NGUYEN\Desktop\c#\do_an\do_an\obj\Debug\do_an.Login.resources
 C:\Users\HOA NGUYEN\Desktop\c#\do_an\do_an\obj\Debug\do_an.TableManager.resources
 C:\Users\HOA NGUYEN\Desktop\c#\do_an\do_an\obj\Debug\do_an.AccountProfile.resources
 C:\Users\HOA NGUYEN\Desktop\c#\do_an\do_an\obj\Debug\do_an.Admin.resources
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\bin\Debug\do_an.exe.config
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\bin\Debug\do_an.exe
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\bin\Debug\do_an.pdb
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.csproj.AssemblyReference.cache
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.AccountProfile.resources
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.Admin.resources
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.Login.resources
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.Properties.Resources.resources
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.TableManager.resources
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.csproj.GenerateResource.cache
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.csproj.CoreCompileInputs.cache
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.exe
+C:\Users\HOA NGUYEN\Desktop\Github\do_an_desktop\do_an\obj\Debug\do_an.pdb

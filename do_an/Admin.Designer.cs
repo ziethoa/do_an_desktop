@@ -120,6 +120,9 @@ namespace do_an
             this.dtgvDrinkCatagory = new System.Windows.Forms.DataGridView();
             this.tpTable = new System.Windows.Forms.TabPage();
             this.panel29 = new System.Windows.Forms.Panel();
+            this.panel35 = new System.Windows.Forms.Panel();
+            this.nmrTablePrice = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel34 = new System.Windows.Forms.Panel();
             this.cbTableStatus = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -137,11 +140,8 @@ namespace do_an
             this.panel33 = new System.Windows.Forms.Panel();
             this.dtgvTable = new System.Windows.Forms.DataGridView();
             this.tpAccount = new System.Windows.Forms.TabPage();
-            this.panel35 = new System.Windows.Forms.Panel();
-            this.nmrTablePrice = new System.Windows.Forms.NumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
-            this.dtgvAccount = new System.Windows.Forms.DataGridView();
             this.panel37 = new System.Windows.Forms.Panel();
+            this.btnResetPass = new System.Windows.Forms.Button();
             this.panel39 = new System.Windows.Forms.Panel();
             this.cbTypeAccount = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -157,7 +157,7 @@ namespace do_an
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.panel43 = new System.Windows.Forms.Panel();
-            this.btnResetPass = new System.Windows.Forms.Button();
+            this.dtgvAccount = new System.Windows.Forms.DataGridView();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -201,6 +201,8 @@ namespace do_an
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDrinkCatagory)).BeginInit();
             this.tpTable.SuspendLayout();
             this.panel29.SuspendLayout();
+            this.panel35.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrTablePrice)).BeginInit();
             this.panel34.SuspendLayout();
             this.panel30.SuspendLayout();
             this.panel31.SuspendLayout();
@@ -208,15 +210,13 @@ namespace do_an
             this.panel33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).BeginInit();
             this.tpAccount.SuspendLayout();
-            this.panel35.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrTablePrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.panel37.SuspendLayout();
             this.panel39.SuspendLayout();
             this.panel40.SuspendLayout();
             this.panel41.SuspendLayout();
             this.panel42.SuspendLayout();
             this.panel43.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -231,7 +231,7 @@ namespace do_an
             this.tcAdmin.Location = new System.Drawing.Point(13, 13);
             this.tcAdmin.Name = "tcAdmin";
             this.tcAdmin.SelectedIndex = 0;
-            this.tcAdmin.Size = new System.Drawing.Size(709, 433);
+            this.tcAdmin.Size = new System.Drawing.Size(746, 433);
             this.tcAdmin.TabIndex = 0;
             // 
             // tpBill
@@ -1093,6 +1093,42 @@ namespace do_an
             this.panel29.Size = new System.Drawing.Size(328, 333);
             this.panel29.TabIndex = 10;
             // 
+            // panel35
+            // 
+            this.panel35.Controls.Add(this.nmrTablePrice);
+            this.panel35.Controls.Add(this.label18);
+            this.panel35.Location = new System.Drawing.Point(3, 144);
+            this.panel35.Name = "panel35";
+            this.panel35.Size = new System.Drawing.Size(322, 42);
+            this.panel35.TabIndex = 7;
+            // 
+            // nmrTablePrice
+            // 
+            this.nmrTablePrice.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nmrTablePrice.Location = new System.Drawing.Point(142, 12);
+            this.nmrTablePrice.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
+            this.nmrTablePrice.Name = "nmrTablePrice";
+            this.nmrTablePrice.Size = new System.Drawing.Size(180, 22);
+            this.nmrTablePrice.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label18.Location = new System.Drawing.Point(3, 11);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(44, 20);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Giá:";
+            // 
             // panel34
             // 
             this.panel34.Controls.Add(this.cbTableStatus);
@@ -1246,56 +1282,10 @@ namespace do_an
             this.tpAccount.Location = new System.Drawing.Point(4, 25);
             this.tpAccount.Name = "tpAccount";
             this.tpAccount.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAccount.Size = new System.Drawing.Size(701, 404);
+            this.tpAccount.Size = new System.Drawing.Size(738, 404);
             this.tpAccount.TabIndex = 6;
             this.tpAccount.Text = "Tài khoản";
             this.tpAccount.UseVisualStyleBackColor = true;
-            // 
-            // panel35
-            // 
-            this.panel35.Controls.Add(this.nmrTablePrice);
-            this.panel35.Controls.Add(this.label18);
-            this.panel35.Location = new System.Drawing.Point(3, 144);
-            this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(322, 42);
-            this.panel35.TabIndex = 7;
-            // 
-            // nmrTablePrice
-            // 
-            this.nmrTablePrice.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nmrTablePrice.Location = new System.Drawing.Point(142, 12);
-            this.nmrTablePrice.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
-            0,
-            0});
-            this.nmrTablePrice.Name = "nmrTablePrice";
-            this.nmrTablePrice.Size = new System.Drawing.Size(180, 22);
-            this.nmrTablePrice.TabIndex = 1;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label18.Location = new System.Drawing.Point(3, 11);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(44, 20);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Giá:";
-            // 
-            // dtgvAccount
-            // 
-            this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvAccount.Location = new System.Drawing.Point(3, 0);
-            this.dtgvAccount.Name = "dtgvAccount";
-            this.dtgvAccount.RowHeadersWidth = 51;
-            this.dtgvAccount.RowTemplate.Height = 24;
-            this.dtgvAccount.Size = new System.Drawing.Size(354, 333);
-            this.dtgvAccount.TabIndex = 0;
             // 
             // panel37
             // 
@@ -1305,8 +1295,17 @@ namespace do_an
             this.panel37.Controls.Add(this.panel41);
             this.panel37.Location = new System.Drawing.Point(368, 67);
             this.panel37.Name = "panel37";
-            this.panel37.Size = new System.Drawing.Size(328, 333);
+            this.panel37.Size = new System.Drawing.Size(364, 333);
             this.panel37.TabIndex = 7;
+            // 
+            // btnResetPass
+            // 
+            this.btnResetPass.Location = new System.Drawing.Point(180, 144);
+            this.btnResetPass.Name = "btnResetPass";
+            this.btnResetPass.Size = new System.Drawing.Size(145, 49);
+            this.btnResetPass.TabIndex = 4;
+            this.btnResetPass.Text = "Đặt lại mật khẩu";
+            this.btnResetPass.UseVisualStyleBackColor = true;
             // 
             // panel39
             // 
@@ -1314,15 +1313,15 @@ namespace do_an
             this.panel39.Controls.Add(this.label20);
             this.panel39.Location = new System.Drawing.Point(3, 96);
             this.panel39.Name = "panel39";
-            this.panel39.Size = new System.Drawing.Size(322, 42);
+            this.panel39.Size = new System.Drawing.Size(358, 42);
             this.panel39.TabIndex = 6;
             // 
             // cbTypeAccount
             // 
             this.cbTypeAccount.FormattingEnabled = true;
-            this.cbTypeAccount.Location = new System.Drawing.Point(142, 11);
+            this.cbTypeAccount.Location = new System.Drawing.Point(160, 11);
             this.cbTypeAccount.Name = "cbTypeAccount";
-            this.cbTypeAccount.Size = new System.Drawing.Size(180, 24);
+            this.cbTypeAccount.Size = new System.Drawing.Size(195, 24);
             this.cbTypeAccount.TabIndex = 7;
             // 
             // label20
@@ -1341,14 +1340,14 @@ namespace do_an
             this.panel40.Controls.Add(this.label21);
             this.panel40.Location = new System.Drawing.Point(3, 48);
             this.panel40.Name = "panel40";
-            this.panel40.Size = new System.Drawing.Size(322, 42);
+            this.panel40.Size = new System.Drawing.Size(358, 42);
             this.panel40.TabIndex = 5;
             // 
             // txtDisplayName
             // 
-            this.txtDisplayName.Location = new System.Drawing.Point(142, 11);
+            this.txtDisplayName.Location = new System.Drawing.Point(160, 11);
             this.txtDisplayName.Name = "txtDisplayName";
-            this.txtDisplayName.Size = new System.Drawing.Size(180, 22);
+            this.txtDisplayName.Size = new System.Drawing.Size(195, 22);
             this.txtDisplayName.TabIndex = 1;
             // 
             // label21
@@ -1367,15 +1366,15 @@ namespace do_an
             this.panel41.Controls.Add(this.label22);
             this.panel41.Location = new System.Drawing.Point(3, 0);
             this.panel41.Name = "panel41";
-            this.panel41.Size = new System.Drawing.Size(322, 42);
+            this.panel41.Size = new System.Drawing.Size(358, 42);
             this.panel41.TabIndex = 4;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(142, 11);
+            this.txtUsername.Location = new System.Drawing.Point(160, 11);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.ReadOnly = true;
-            this.txtUsername.Size = new System.Drawing.Size(180, 22);
+            this.txtUsername.Size = new System.Drawing.Size(195, 22);
             this.txtUsername.TabIndex = 1;
             // 
             // label22
@@ -1443,20 +1442,21 @@ namespace do_an
             this.panel43.Size = new System.Drawing.Size(358, 333);
             this.panel43.TabIndex = 4;
             // 
-            // btnResetPass
+            // dtgvAccount
             // 
-            this.btnResetPass.Location = new System.Drawing.Point(180, 144);
-            this.btnResetPass.Name = "btnResetPass";
-            this.btnResetPass.Size = new System.Drawing.Size(145, 49);
-            this.btnResetPass.TabIndex = 4;
-            this.btnResetPass.Text = "Đặt lại mật khẩu";
-            this.btnResetPass.UseVisualStyleBackColor = true;
+            this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvAccount.Location = new System.Drawing.Point(3, 0);
+            this.dtgvAccount.Name = "dtgvAccount";
+            this.dtgvAccount.RowHeadersWidth = 51;
+            this.dtgvAccount.RowTemplate.Height = 24;
+            this.dtgvAccount.Size = new System.Drawing.Size(354, 333);
+            this.dtgvAccount.TabIndex = 0;
             // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 450);
+            this.ClientSize = new System.Drawing.Size(771, 450);
             this.Controls.Add(this.tcAdmin);
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1519,6 +1519,9 @@ namespace do_an
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDrinkCatagory)).EndInit();
             this.tpTable.ResumeLayout(false);
             this.panel29.ResumeLayout(false);
+            this.panel35.ResumeLayout(false);
+            this.panel35.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrTablePrice)).EndInit();
             this.panel34.ResumeLayout(false);
             this.panel34.PerformLayout();
             this.panel30.ResumeLayout(false);
@@ -1529,10 +1532,6 @@ namespace do_an
             this.panel33.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvTable)).EndInit();
             this.tpAccount.ResumeLayout(false);
-            this.panel35.ResumeLayout(false);
-            this.panel35.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrTablePrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.panel37.ResumeLayout(false);
             this.panel39.ResumeLayout(false);
             this.panel39.PerformLayout();
@@ -1542,6 +1541,7 @@ namespace do_an
             this.panel41.PerformLayout();
             this.panel42.ResumeLayout(false);
             this.panel43.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
             this.ResumeLayout(false);
 
         }
