@@ -22,11 +22,9 @@ namespace do_an
 
         void LoadAccountList()
         {
-            string query = "SELECT* FROM Account";//chạy câu query để truy vấn
+            string query = "EXEC USP_GetAccountByUserName @userName , @userName";//chạy câu query để truy vấn
             Dataprovider provider = new Dataprovider();
-            dtgvAccount.DataSource = provider.ExecuteQuery(query);
-            
-
+            dtgvAccount.DataSource = provider.ExecuteQuery(query, new object[] { "admin" , "dat"}); 
         }
     }
 }

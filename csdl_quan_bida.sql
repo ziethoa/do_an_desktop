@@ -23,7 +23,6 @@ GO
 
 CREATE TABLE Account
 (
-	
 	tenhienthi NVARCHAR (100)NOT NULL ,
 	tennguoidung NVARCHAR (100)NOT NULL PRIMARY KEY ,
 	matkhau NVARCHAR (1000)NOT NULL DEFAULT 0,
@@ -93,3 +92,13 @@ CREATE TABLE BillInfo
 	FOREIGN KEY (idDrink) REFERENCES dbo.Drink(id)
 )
 GO
+
+CREATE PROC USP_GetAccountByUserName-- thủ tục lưu trữ được dùng để thực hiện một xử lí nhắt định
+@userName nvarchar (100)
+AS
+BEGIN 
+	SELECT* FROM Account WHERE tennguoidung = @userName
+END
+GO
+
+EXEC USP_GetAccountByUserName @userName = 'dat'
