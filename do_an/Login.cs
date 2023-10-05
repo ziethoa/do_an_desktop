@@ -59,7 +59,6 @@ namespace do_an
                     MessageBox.Show("Sai ten dang nhap hoac mat khau", "Error", MessageBoxButtons.OK);
                     txtUsername.Clear();
                     txtPassword.Clear();
-
                     txtUsername.Focus();
                 }
              
