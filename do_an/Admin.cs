@@ -17,13 +17,8 @@ namespace do_an
         public Admin()
         {
             InitializeComponent();
-            LoadAccountList();
         }
 
-        void LoadAccountList()
-        {
-            string query = "EXEC USP_GetAccountByUserName @userName";//chạy câu query để truy vấn
-            dtgvAccount.DataSource = Dataprovider.Instance.ExecuteQuery(query, new object[] { "admin" }); 
-        }
+       
     }
 }

@@ -22,8 +22,6 @@ namespace do_an.DAO
 
         private string connectionSTR = @"Data Source=MSI\HOA;Initial Catalog=QuanLyQuanBida;Integrated Security=True";//tạo kết nối database tới ai
 
-        
-
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();//tạo bảng chứa data từ database

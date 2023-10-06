@@ -1,4 +1,5 @@
-﻿using System;
+﻿using do_an.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,46 +32,42 @@ namespace do_an
             }
         }
 
+        bool login(string username, string password)
+        {
+            return AccountDAO.Instance.login(username, password);
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-           
-            string username = txtUsername.Text;
-            string user_password = txtPassword.Text;
+                string username = txtUsername.Text;
+                string user_password = txtPassword.Text;
 
-            try
-            {
-                string query = "SELECT * FROM Account WHERE tennguoidung = '" + txtUsername.Text + "' AND matkhau = '" + txtPassword.Text + "'";
-                SqlDataAdapter sda = new SqlDataAdapter(query, cnn);
-
-                DataTable dtable = new DataTable();
-                sda.Fill(dtable);
-
-                if (dtable.Rows.Count > 0)
+                try
                 {
-                    username = txtUsername.Text;
-                    user_password = txtPassword.Text;
+                    if (login(username, user_password))
+                    {
+                        TableManager f = new TableManager();
+                        this.Hide();//ẩn form login
+                        f.ShowDialog();
+                        this.Show();//hiện file login
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sai ten dang nhap hoac mat khau", "Error", MessageBoxButtons.OK);
+                        txtUsername.Clear();
+                        txtPassword.Clear();
+                        txtUsername.Focus();
+                    }
 
-                    TableManager f = new TableManager();
-                    this.Hide();//ẩn form login
-                    f.ShowDialog();
-                    this.Show();//hiện file login
-                } else
-                {
-                    MessageBox.Show("Sai ten dang nhap hoac mat khau", "Error", MessageBoxButtons.OK);
-                    txtUsername.Clear();
-                    txtPassword.Clear();
-                    txtUsername.Focus();
                 }
-             
-            }
-            catch
-            {
-                MessageBox.Show("Error");
-            }
-            finally
-            {
-                cnn.Close();
-            }
+                catch
+                {
+                    MessageBox.Show("Error");
+                }
+                finally
+                {
+                    cnn.Close();
+                }
         }
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {

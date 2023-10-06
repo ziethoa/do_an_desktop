@@ -93,7 +93,7 @@ CREATE TABLE BillInfo
 )
 GO
 
-CREATE PROC USP_GetAccountByUserName-- thủ tục lưu trữ được dùng để thực hiện một xử lí nhắt định
+CREATE PROC USP_GetAccountByUserName-- thủ tục lưu trữ được dùng để thực hiện một xử lí nhắt định(bảo mất cao)
 @userName nvarchar (100)
 AS
 BEGIN 
@@ -102,3 +102,12 @@ END
 GO
 
 EXEC USP_GetAccountByUserName @userName = 'dat'
+
+CREATE PROC USP_Login
+@userName nvarchar (100), 
+@passWord nvarchar(100)
+AS
+BEGIN
+	SELECT* FROM Account WHERE tennguoidung = @userName AND matkhau = @passWord
+END
+GO
