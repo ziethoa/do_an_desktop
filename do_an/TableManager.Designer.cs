@@ -38,6 +38,7 @@ namespace do_an
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lsvBills = new System.Windows.Forms.ListView();
             this.pAbate = new System.Windows.Forms.Panel();
             this.btnTimeFinish = new System.Windows.Forms.Button();
             this.btnAbate = new System.Windows.Forms.Button();
@@ -70,7 +71,6 @@ namespace do_an
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.lsvBills = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pAbate.SuspendLayout();
@@ -152,6 +152,17 @@ namespace do_an
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 386);
             this.panel3.TabIndex = 2;
+            // 
+            // lsvBills
+            // 
+            this.lsvBills.GridLines = true;
+            this.lsvBills.HideSelection = false;
+            this.lsvBills.Location = new System.Drawing.Point(0, 0);
+            this.lsvBills.Name = "lsvBills";
+            this.lsvBills.Size = new System.Drawing.Size(347, 386);
+            this.lsvBills.TabIndex = 0;
+            this.lsvBills.UseCompatibleStateImageBehavior = false;
+            this.lsvBills.View = System.Windows.Forms.View.List;
             // 
             // pAbate
             // 
@@ -478,17 +489,6 @@ namespace do_an
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
-            // 
-            // lsvBills
-            // 
-            this.lsvBills.GridLines = true;
-            this.lsvBills.HideSelection = false;
-            this.lsvBills.Location = new System.Drawing.Point(0, 0);
-            this.lsvBills.Name = "lsvBills";
-            this.lsvBills.Size = new System.Drawing.Size(350, 386);
-            this.lsvBills.TabIndex = 0;
-            this.lsvBills.UseCompatibleStateImageBehavior = false;
-            this.lsvBills.View = System.Windows.Forms.View.List;
             // 
             // TableManager
             // 

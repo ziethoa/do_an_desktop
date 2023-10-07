@@ -140,7 +140,7 @@ SELECT* FROM Bill
 SELECT* FROM BillInfo
 SELECT* FROM Food
 SELECT* FROM Drink
-SELECT* FROM FoodCatagory
+SELECT* FROM FoodCatagory 
 SELECT* FROM DrinkCatagory
 GO
 --thêm food catagory
@@ -184,8 +184,9 @@ INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Sài gòn bạc', 3, 3
 INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con mèo', 3, 30000)
 INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con ngựa', 3, 30000)
 GO
---bill
+
 DELETE FROM Bill
+GO
 --bill
 INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 14, 1, 0)
 INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 16, 1, 0)
@@ -196,3 +197,14 @@ INSERT INTO BillInfo (idBill, idFood, idDrink, count) VALUES (12, 4, 2, 4)
 INSERT INTO BillInfo (idBill, idFood, idDrink, count) VALUES (13, 8, 4, 2)
 GO
 
+CREATE PROC USP_Bill
+AS
+	SELECT* FROM Bill WHERE idTable = 14 AND tinhtrang = 1
+GO
+EXEC USP_Bill
+GO
+
+
+
+SELECT* FROM Bill WHERE idTable = 14 AND tinhtrang = 1
+SELECT* FROM BillInfo WHERE idBill = 13

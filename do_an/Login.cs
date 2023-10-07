@@ -43,8 +43,8 @@ namespace do_an
                 string user_password = txtPassword.Text;
 
 
-            try
-            {
+            //try
+            //{
                 if (login(username, user_password))
                 {
                     TableManager f = new TableManager();
@@ -60,15 +60,15 @@ namespace do_an
                     txtUsername.Focus();
                 }
 
-            }
-            catch
-            {
-                MessageBox.Show("Error");
-            }
-            finally
-            {
-                cnn.Close();
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Error");
+            //}
+            //finally
+            //{
+            //    cnn.Close();
+            //}
         }
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
