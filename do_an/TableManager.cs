@@ -1,4 +1,6 @@
-﻿using System;
+﻿using do_an.DAO;
+using do_an.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,31 +17,40 @@ namespace do_an
         public TableManager()
         {
             InitializeComponent();
+            LoadTable();
+        }
+
+        void LoadTable()
+        {
+            List<TableDTO> TableList = TableDAO.Instance.LoadTableList();
+
+            foreach(TableDTO item in TableList)
+            {
+                Button btn = new Button() {Width = TableDAO.TableWidth, Height = TableDAO.TableHeight };
+                btn.Text = item.Name + Environment.NewLine + item.Status;
+                if (item.Status == "Trống")
+                {
+                    btn.BackColor = Color.LightSeaGreen;
+                }
+                else
+                {
+                    btn.BackColor = Color.LightPink;
+                }
+                btn.ForeColor = Color.Black;
+                flpTable.Controls.Add(btn);
+                
+            }
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DateTime StartAt = DateTime.Now;
-            txtTimeStart.Text = StartAt.ToString(" hh:mm tt");
-        }
-
-        private void btnTimeFinish_Click(object sender, EventArgs e)
-        {
-            DateTime EndAt = DateTime.Now;
-            txtTimeFinish.Text = EndAt.ToString(" hh:mm tt");
-        }
-
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AccountProfile f = new AccountProfile();
             f.ShowDialog();
         }
-
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Admin f = new Admin();

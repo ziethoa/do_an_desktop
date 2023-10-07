@@ -66,7 +66,6 @@ namespace do_an
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCatagoryFood = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pSwitchTable = new System.Windows.Forms.Panel();
             this.btnSwitchTable = new System.Windows.Forms.Button();
             this.cbTable = new System.Windows.Forms.ComboBox();
@@ -81,7 +80,6 @@ namespace do_an
             ((System.ComponentModel.ISupportInitialize)(this.DrinkCount)).BeginInit();
             this.pFood.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FoodCount)).BeginInit();
-            this.flpTable.SuspendLayout();
             this.pSwitchTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +95,7 @@ namespace do_an
             this.trợGiúpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(157, 517);
+            this.menuStrip1.Size = new System.Drawing.Size(159, 517);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -105,7 +103,7 @@ namespace do_an
             // 
             this.homeToolStripMenuItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeToolStripMenuItem.BackgroundImage")));
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.homeToolStripMenuItem.Text = "Home";
             // 
             // adminToolStripMenuItem
@@ -129,7 +127,7 @@ namespace do_an
             // thôngTinCáNhânToolStripMenuItem
             // 
             this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
             // 
@@ -144,13 +142,13 @@ namespace do_an
             // 
             this.trợGiúpToolStripMenuItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("trợGiúpToolStripMenuItem.BackgroundImage")));
             this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
-            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.trợGiúpToolStripMenuItem.Text = "Trợ giúp";
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.lsvBills);
-            this.panel3.Location = new System.Drawing.Point(624, 7);
+            this.panel3.Location = new System.Drawing.Point(637, 8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 386);
             this.panel3.TabIndex = 2;
@@ -186,7 +184,6 @@ namespace do_an
             this.btnTimeFinish.TabIndex = 12;
             this.btnTimeFinish.Text = "Kết thúc";
             this.btnTimeFinish.UseVisualStyleBackColor = true;
-            this.btnTimeFinish.Click += new System.EventHandler(this.btnTimeFinish_Click);
             // 
             // btnAbate
             // 
@@ -439,30 +436,18 @@ namespace do_an
             // 
             // flpTable
             // 
-            this.flpTable.Controls.Add(this.button1);
-            this.flpTable.Location = new System.Drawing.Point(161, 7);
+            this.flpTable.AutoScroll = true;
+            this.flpTable.Location = new System.Drawing.Point(171, 7);
             this.flpTable.Name = "flpTable";
-            this.flpTable.Size = new System.Drawing.Size(447, 505);
+            this.flpTable.Size = new System.Drawing.Size(460, 505);
             this.flpTable.TabIndex = 5;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.ForeColor = System.Drawing.Color.Chocolate;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 89);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Bàn 1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pSwitchTable
             // 
             this.pSwitchTable.Controls.Add(this.btnSwitchTable);
             this.pSwitchTable.Controls.Add(this.cbTable);
             this.pSwitchTable.Controls.Add(this.label10);
-            this.pSwitchTable.Location = new System.Drawing.Point(624, 400);
+            this.pSwitchTable.Location = new System.Drawing.Point(637, 400);
             this.pSwitchTable.Name = "pSwitchTable";
             this.pSwitchTable.Size = new System.Drawing.Size(350, 112);
             this.pSwitchTable.TabIndex = 6;
@@ -532,7 +517,6 @@ namespace do_an
             this.pFood.ResumeLayout(false);
             this.pFood.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FoodCount)).EndInit();
-            this.flpTable.ResumeLayout(false);
             this.pSwitchTable.ResumeLayout(false);
             this.pSwitchTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
@@ -581,7 +565,6 @@ namespace do_an
         private System.Windows.Forms.Button btnSwitchTable;
         private System.Windows.Forms.ComboBox cbTable;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnTimeFinish;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
     }

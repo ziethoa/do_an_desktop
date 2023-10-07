@@ -103,7 +103,7 @@ GO
 
 EXEC USP_GetAccountByUserName @userName = 'dat'
 
-CREATE PROC USP_Login
+CREATE PROC USP_Login 
 @userName nvarchar (100), 
 @passWord nvarchar(100)
 AS
@@ -111,3 +111,27 @@ BEGIN
 	SELECT* FROM Account WHERE tennguoidung = @userName AND matkhau = @passWord
 END
 GO
+
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 1', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 2', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 3', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 4', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 5', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 6', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 7', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 8', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 9', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 10', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 11', N'Trống', '70000')
+INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 12', N'Trống', '70000')
+GO
+
+SELECT* FROM TableBida
+
+CREATE PROC USP_GetTableList
+AS SELECT* FROM TableBida
+GO
+
+EXEC USP_GetTableList 
+
+UPDATE TableBida SET tinhtrang = N'Có người' WHERE ten = N'Bàn 4'

@@ -60,6 +60,8 @@
     </Compile>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\Dataprovider.cs" />
+    <Compile Include="DAO\TableDAO.cs" />
+    <Compile Include="DTO\TableDTO.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,8 +114,6 @@
   <ItemGroup>
     <None Include="Resources\2157ed15efeeebd-removebg-preview.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

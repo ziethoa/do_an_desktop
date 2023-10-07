@@ -42,32 +42,33 @@ namespace do_an
                 string username = txtUsername.Text;
                 string user_password = txtPassword.Text;
 
-                try
-                {
-                    if (login(username, user_password))
-                    {
-                        TableManager f = new TableManager();
-                        this.Hide();//ẩn form login
-                        f.ShowDialog();
-                        this.Show();//hiện file login
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sai ten dang nhap hoac mat khau", "Error", MessageBoxButtons.OK);
-                        txtUsername.Clear();
-                        txtPassword.Clear();
-                        txtUsername.Focus();
-                    }
 
-                }
-                catch
+            try
+            {
+                if (login(username, user_password))
                 {
-                    MessageBox.Show("Error");
+                    TableManager f = new TableManager();
+                    this.Hide();//ẩn form login
+                    f.ShowDialog();
+                    this.Show();//hiện file login
                 }
-                finally
+                else
                 {
-                    cnn.Close();
+                    MessageBox.Show("Sai ten dang nhap hoac mat khau", "Error", MessageBoxButtons.OK);
+                    txtUsername.Clear();
+                    txtPassword.Clear();
+                    txtUsername.Focus();
                 }
+
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+            finally
+            {
+                cnn.Close();
+            }
         }
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
