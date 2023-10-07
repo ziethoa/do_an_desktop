@@ -111,7 +111,7 @@ BEGIN
 	SELECT* FROM Account WHERE tennguoidung = @userName AND matkhau = @passWord
 END
 GO
-
+--thêm bàn
 INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 1', N'Trống', '70000')
 INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 2', N'Trống', '70000')
 INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 3', N'Trống', '70000')
@@ -135,3 +135,64 @@ GO
 EXEC USP_GetTableList 
 
 UPDATE TableBida SET tinhtrang = N'Có người' WHERE ten = N'Bàn 4'
+
+SELECT* FROM Bill
+SELECT* FROM BillInfo
+SELECT* FROM Food
+SELECT* FROM Drink
+SELECT* FROM FoodCatagory
+SELECT* FROM DrinkCatagory
+GO
+--thêm food catagory
+INSERT INTO FoodCatagory ( tenhienthi ) VALUES ( N'Trái cây' )
+INSERT INTO FoodCatagory ( tenhienthi ) VALUES ( N'Ăn Vặt' )
+INSERT INTO FoodCatagory ( tenhienthi ) VALUES ( N'Mì' )
+INSERT INTO FoodCatagory ( tenhienthi ) VALUES ( N'Cơm' )
+GO
+--thêm drink catagory
+INSERT INTO DrinkCatagory ( tenhienthi ) VALUES ( N'Nước Ngọt' )
+INSERT INTO DrinkCatagory ( tenhienthi ) VALUES ( N'Bia' )
+INSERT INTO DrinkCatagory ( tenhienthi ) VALUES ( N'Thuốc lá' )
+GO
+--thêm món ăn
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Táo', 1, 15000 )
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Ổi', 1, 15000 )
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Thơm', 1, 15000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'xoài',1 ,15000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Mận', 1, 15000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Khoai tây chiên', 2, 30000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Xiên que', 2, 30000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Snack', 2, 15000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Bắp xào', 2, 20000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Mì xào bò', 3, 40000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Mì xào hải sản', 3, 40000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Cơm chiên dương châu', 4, 35000)
+INSERT INTO Food (tenhienthi, idCatagory, gia) VALUES (N'Cơm gà', 4, 35000)
+GO
+--thêm đồ uống
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Sting', 1, 10000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'7up', 1, 10000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Pepsi/Coca', 1, 10000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Redbull', 1, 10000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Trà xanh không độ', 1, 10000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Cafe', 1, 15000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Aquafina', 1, 7000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'333', 2, 15000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Tiger', 2, 15000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Ba số bạc', 3, 30000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Sài gòn bạc', 3, 30000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con mèo', 3, 30000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con ngựa', 3, 30000)
+GO
+--bill
+DELETE FROM Bill
+--bill
+INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 14, 1, 0)
+INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 16, 1, 0)
+INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 19, 1, 0)
+GO
+--bill info 
+INSERT INTO BillInfo (idBill, idFood, idDrink, count) VALUES (12, 4, 2, 4)
+INSERT INTO BillInfo (idBill, idFood, idDrink, count) VALUES (13, 8, 4, 2)
+GO
+

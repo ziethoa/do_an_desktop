@@ -38,7 +38,6 @@ namespace do_an
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lsvBills = new System.Windows.Forms.Panel();
             this.pAbate = new System.Windows.Forms.Panel();
             this.btnTimeFinish = new System.Windows.Forms.Button();
             this.btnAbate = new System.Windows.Forms.Button();
@@ -71,6 +70,7 @@ namespace do_an
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.lsvBills = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pAbate.SuspendLayout();
@@ -95,7 +95,7 @@ namespace do_an
             this.trợGiúpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(159, 517);
+            this.menuStrip1.Size = new System.Drawing.Size(157, 517);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,7 +103,7 @@ namespace do_an
             // 
             this.homeToolStripMenuItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeToolStripMenuItem.BackgroundImage")));
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.homeToolStripMenuItem.Text = "Home";
             // 
             // adminToolStripMenuItem
@@ -152,13 +152,6 @@ namespace do_an
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 386);
             this.panel3.TabIndex = 2;
-            // 
-            // lsvBills
-            // 
-            this.lsvBills.Location = new System.Drawing.Point(3, 3);
-            this.lsvBills.Name = "lsvBills";
-            this.lsvBills.Size = new System.Drawing.Size(344, 380);
-            this.lsvBills.TabIndex = 4;
             // 
             // pAbate
             // 
@@ -486,6 +479,17 @@ namespace do_an
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
+            // lsvBills
+            // 
+            this.lsvBills.GridLines = true;
+            this.lsvBills.HideSelection = false;
+            this.lsvBills.Location = new System.Drawing.Point(0, 0);
+            this.lsvBills.Name = "lsvBills";
+            this.lsvBills.Size = new System.Drawing.Size(350, 386);
+            this.lsvBills.TabIndex = 0;
+            this.lsvBills.UseCompatibleStateImageBehavior = false;
+            this.lsvBills.View = System.Windows.Forms.View.List;
+            // 
             // TableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -534,7 +538,6 @@ namespace do_an
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trợGiúpToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel lsvBills;
         private System.Windows.Forms.Panel pAbate;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel pFood;
@@ -567,5 +570,6 @@ namespace do_an
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnTimeFinish;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.ListView lsvBills;
     }
 }
