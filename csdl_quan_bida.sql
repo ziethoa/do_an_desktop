@@ -85,13 +85,16 @@ CREATE TABLE BillInfo
 	idBill INT NOT NULL,
 	idFood INT NOT NULL,
 	idDrink INT NOT NULL,
-	count INT NOT NULL DEFAULT 0 
+	countf INT NOT NULL DEFAULT 0 ,
+	countd INT NOT NULL DEFAULT 0
 
 	FOREIGN KEY (idBill) REFERENCES dbo.Bill(id),
 	FOREIGN KEY (idFood) REFERENCES dbo.Food(id),
 	FOREIGN KEY (idDrink) REFERENCES dbo.Drink(id)
 )
 GO
+
+DROP TABLE BillInfo
 
 CREATE PROC USP_GetAccountByUserName-- thủ tục lưu trữ được dùng để thực hiện một xử lí nhắt định(bảo mất cao)
 @userName nvarchar (100)
@@ -136,8 +139,9 @@ EXEC USP_GetTableList
 
 UPDATE TableBida SET tinhtrang = N'Có người' WHERE ten = N'Bàn 4'
 
+SELECT* FROM TableBida
 SELECT* FROM Bill
-SELECT* FROM BillInfo
+SELECT* FROM BillInfo	
 SELECT* FROM Food
 SELECT* FROM Drink
 SELECT* FROM FoodCatagory 
@@ -177,34 +181,48 @@ INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Redbull', 1, 10000)
 INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Trà xanh không độ', 1, 10000)
 INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Cafe', 1, 15000)
 INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Aquafina', 1, 7000)
-INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'333', 2, 15000)
-INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Tiger', 2, 15000)
-INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Ba số bạc', 3, 30000)
-INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Sài gòn bạc', 3, 30000)
-INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con mèo', 3, 30000)
-INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con ngựa', 3, 30000)
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'333', 2, 15000) UPDATE Drink SET tenhienthi = N'Bia 333' WHERE id = 8
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Tiger', 2, 15000) UPDATE Drink SET tenhienthi = N'Bia Tiger' WHERE id = 9
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Ba số bạc', 3, 30000) UPDATE Drink SET tenhienthi = N'Thuốc lá Ba số bạc' WHERE id = 10
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Sài gòn bạc', 3, 30000) UPDATE Drink SET tenhienthi = N'Thuốc lá Sài Gòn bạc' WHERE id = 11
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con mèo', 3, 30000) UPDATE Drink SET tenhienthi = N'Thuốc lá Con mèo' WHERE id = 12
+INSERT INTO Drink (tenhienthi, idCatagory, gia) VALUES (N'Con ngựa', 3, 30000) UPDATE Drink SET tenhienthi = N'Thuốc lá Con ngựa' WHERE id = 13
 GO
-
+--reset id identity
+DELETE FROM TableBida
 DELETE FROM Bill
+DELETE FROM BillInfo
+DBCC CHECKIDENT(TableBida, RESEED, 0)
+DBCC CHECKIDENT(Bill, RESEED, 0)
+DBCC CHECKIDENT(BillInfo, RESEED, 0)
 GO
 --bill
-INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 14, 1, 0)
-INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 16, 1, 0)
-INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 19, 1, 0)
+INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 4, 1, 0)
+INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 6, 1, 0)
+INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 9, 1, 0)
 GO
 --bill info 
-INSERT INTO BillInfo (idBill, idFood, idDrink, count) VALUES (12, 4, 2, 4)
-INSERT INTO BillInfo (idBill, idFood, idDrink, count) VALUES (13, 8, 4, 2)
+INSERT INTO BillInfo (idBill, idFood, idDrink, countf, countd) VALUES (1, 4, 2, 2, 4)
+INSERT INTO BillInfo (idBill, idFood, idDrink, countf, countd) VALUES (2, 8, 4, 3, 2)
+INSERT INTO BillInfo (idBill, idFood, idDrink, countf, countd) VALUES (2, 2, 3, 2, 1)
 GO
 
-CREATE PROC USP_Bill
+CREATE PROC USP_Bill--chua them vao vs
 AS
 	SELECT* FROM Bill WHERE idTable = 14 AND tinhtrang = 1
 GO
 EXEC USP_Bill
 GO
 
-
+CREATE PROC USP_BillInfo--chua them vao vs
+AS
+	SELECT Food.tenhienthi, BillInfo.countf, Food.gia, BillInfo.countf*Food.gia, Drink.tenhienthi, BillInfo.countd, Drink.gia, BillInfo.countd*Drink.gia  
+	FROM BillInfo, Bill, Food, Drink 
+	WHERE BillInfo.idBill = Bill.id AND BillInfo.idFood = Food.id AND BillInfo.idDrink = Drink.id AND Bill.idTable = 4
+GO
+EXEC USP_BillInfo
+GO
 
 SELECT* FROM Bill WHERE idTable = 14 AND tinhtrang = 1
-SELECT* FROM BillInfo WHERE idBill = 13
+SELECT Food.tenhienthi, BillInfo.countf, Food.gia, BillInfo.countf*Food.gia AS 'Tonggiaf', Drink.tenhienthi, BillInfo.countd, Drink.gia, BillInfo.countd*Drink.gia AS 'Tonggiad'  FROM BillInfo, Bill, Food, Drink 
+WHERE BillInfo.idBill = Bill.id AND BillInfo.idFood = Food.id AND BillInfo.idDrink = Drink.id AND Bill.idTable = 4

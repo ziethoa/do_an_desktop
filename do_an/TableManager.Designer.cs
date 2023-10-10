@@ -71,6 +71,8 @@ namespace do_an
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pAbate.SuspendLayout();
@@ -155,6 +157,9 @@ namespace do_an
             // 
             // lsvBills
             // 
+            this.lsvBills.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
             this.lsvBills.GridLines = true;
             this.lsvBills.HideSelection = false;
             this.lsvBills.Location = new System.Drawing.Point(0, 0);
@@ -162,7 +167,7 @@ namespace do_an
             this.lsvBills.Size = new System.Drawing.Size(347, 386);
             this.lsvBills.TabIndex = 0;
             this.lsvBills.UseCompatibleStateImageBehavior = false;
-            this.lsvBills.View = System.Windows.Forms.View.List;
+            this.lsvBills.View = System.Windows.Forms.View.Details;
             // 
             // pAbate
             // 
@@ -490,6 +495,14 @@ namespace do_an
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID Food";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Count";
+            // 
             // TableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -571,5 +584,7 @@ namespace do_an
         private System.Windows.Forms.Button btnTimeFinish;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.ListView lsvBills;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

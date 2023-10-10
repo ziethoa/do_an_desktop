@@ -20,9 +20,9 @@ namespace do_an.DTO
         public BillDTO(DataRow row)//chưa có total price
         {
             this.ID = (int)row["id"];
-            this.DateCheckin = (DateTime?)row["dateCheckin"];//error
-            this.DateCheckout = (DateTime?)row["dateCheckout"];
-            this.Status = (int)row["status"];
+            this.DateCheckin = (DateTime?)row["ngayvaogiovao"];//error
+            this.DateCheckout = (DateTime?)row["ngayragiora"];//dấu ? là cho phép null
+            this.Status = (int)row["tinhtrang"];
         }
 
         private int ID;

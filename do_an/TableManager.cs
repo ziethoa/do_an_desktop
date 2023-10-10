@@ -45,7 +45,17 @@ namespace do_an
         }
         void ShowBill(int id)
         {
-            List<BillInfoDTO> listBillInfo = BillInfoDAO.Instance.GetListBillInfo(BillDAO.Instance.GetUncheckBillIDByTableID(id));
+            lsvBills.Items.Clear();
+            List<MenuDTO> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
+
+            foreach(MenuDTO item in listBillInfo)
+            {
+                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
+                lsvItem.SubItems.Add(item.Countf.ToString());
+                lsvItem.SubItems.Add(item.Pricef.ToString());
+
+                lsvBills.Items.Add(lsvItem);
+            }
         }
         private void btn_Click(object sender, EventArgs e)
         {
