@@ -39,6 +39,8 @@ namespace do_an
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lsvBills = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pAbate = new System.Windows.Forms.Panel();
             this.btnTimeFinish = new System.Windows.Forms.Button();
             this.btnAbate = new System.Windows.Forms.Button();
@@ -71,8 +73,8 @@ namespace do_an
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pAbate.SuspendLayout();
@@ -159,7 +161,9 @@ namespace do_an
             // 
             this.lsvBills.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.lsvBills.GridLines = true;
             this.lsvBills.HideSelection = false;
             this.lsvBills.Location = new System.Drawing.Point(0, 0);
@@ -168,6 +172,14 @@ namespace do_an
             this.lsvBills.TabIndex = 0;
             this.lsvBills.UseCompatibleStateImageBehavior = false;
             this.lsvBills.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên món ăn";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Số lượng";
             // 
             // pAbate
             // 
@@ -495,13 +507,13 @@ namespace do_an
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // columnHeader1
+            // columnHeader3
             // 
-            this.columnHeader1.Text = "ID Food";
+            this.columnHeader3.Text = "Đơn  giá";
             // 
-            // columnHeader2
+            // columnHeader4
             // 
-            this.columnHeader2.Text = "Count";
+            this.columnHeader4.Text = "Tổng giá";
             // 
             // TableManager
             // 
@@ -586,5 +598,7 @@ namespace do_an
         private System.Windows.Forms.ListView lsvBills;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

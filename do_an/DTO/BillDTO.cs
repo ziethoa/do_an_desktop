@@ -29,7 +29,7 @@ namespace do_an.DTO
         private DateTime? dateCheckin;
         private DateTime? dateCheckout;
         private int status;
-        private int totalprice;
+        private int totalprice;//chua dung toi
 
         public int ID1 { get => ID; set => ID = value; }
         public DateTime? DateCheckin { get => dateCheckin; set => dateCheckin = value; }

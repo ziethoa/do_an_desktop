@@ -50,9 +50,10 @@ namespace do_an
 
             foreach(MenuDTO item in listBillInfo)
             {
-                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
-                lsvItem.SubItems.Add(item.Countf.ToString());
-                lsvItem.SubItems.Add(item.Pricef.ToString());
+                ListViewItem lsvItem = new ListViewItem(item.FoodOrDrinkName.ToString());
+                lsvItem.SubItems.Add(item.Count.ToString());
+                lsvItem.SubItems.Add(item.Price.ToString());
+                lsvItem.SubItems.Add(item.TotalPrice.ToString());
 
                 lsvBills.Items.Add(lsvItem);
             }

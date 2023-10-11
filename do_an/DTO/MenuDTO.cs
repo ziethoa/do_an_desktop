@@ -9,41 +9,28 @@ namespace do_an.DTO
 {
     public class MenuDTO
     {
-        public MenuDTO(string foodName, string drinkName, int countf, int countd,  float price, float totalPricef = 0, float totalPriced = 0)
+        public MenuDTO(string foodanddrinkname, int count, int price, int totalprice = 0)
         {
-            this.FoodName = foodName;
-            this.DrinkName = drinkName;
-            this.Countf = countf;
-            this.Countd = countd;
+            this.FoodOrDrinkName = foodanddrinkname;
+            this.Count = count;
             this.Price = price;
-            this.TotalPricef = totalPricef;
-            this.TotalPriced = totalPriced;
+            this.TotalPrice = totalprice;
         }
         public MenuDTO(DataRow row)
         {
-            this.FoodName = row["Food.tenhienthi"].ToString();
-            this.DrinkName = row["Drink.tenhienthi"].ToString();
-            this.Countf = (int)row["countf"];
-            this.Countd = (int)row["countd"];
-            this.Price = (float)row["gia"];//thieu price f va d
-            this.TotalPricef = (float)row["Tonggiaf"];
-            this.TotalPriced = (float)row["Tonggiad"];
+            this.FoodOrDrinkName = row["tenhienthi"].ToString();
+            this.Count = (int)row["count"];
+            this.Price = (int)row["gia"];
+            this.TotalPrice = (int)row["Tonggia"];
         }
 
-        private float totalPriced;
-        private float totalPricef;
-        private float price;
-        private int countf;
-        private int countd;
-        private string drinkName;
-        private string foodName;
-
-        public string FoodName { get => foodName; set => foodName = value; }
-        public string DrinkName { get => drinkName; set => drinkName = value; }
-        public float Price { get => price; set => price = value; }
-        public float TotalPricef { get => totalPricef; set => totalPricef = value; }
-        public int Countf { get => countf; set => countf = value; }
-        public int Countd { get => countd; set => countd = value; }
-        public float TotalPriced { get => totalPriced; set => totalPriced = value; }
+        private string foodOrDrinkName;
+        private int count;
+        private int price;
+        private int totalPrice;
+        public string FoodOrDrinkName { get => foodOrDrinkName; set => foodOrDrinkName = value; }
+        public int Count { get => count; set => count = value; }
+        public int Price { get => price; set => price = value; }
+        public int TotalPrice { get => totalPrice; set => totalPrice = value; }
     }
 }

@@ -9,38 +9,30 @@ namespace do_an.DTO
 {
     public class BillInfoDTO
     {
-        public BillInfoDTO(int id, int idbill, int idfood, int iddrink, int countf, int countd)
+        public BillInfoDTO(int id, int idbill, int idfoodordrink, int count)
         {
             this.ID = id;
             this.IDBill = idbill;
-            this.IDFood = idfood;
-            this.IDDrink = iddrink;
-            this.Countf = countf;
-            this.Countd = countd;
+            this.IDFoodOrDrink = idfoodordrink;
+            this.Count = count;
         }
 
         public BillInfoDTO(DataRow row)
         {
             this.ID = (int)row["id"];
-            this.IDBill = (int)row["idbill"];
-            this.IDFood = (int)row["idfood"];
-            this.IDDrink = (int)row["iddrink"];
-            this.Countf = (int)row["countf"];
-            this.Countd = (int)row["countd"];
+            this.IDBill = (int)row["idBill"];
+            this.IDFoodOrDrink = (int)row["idFoodOrDrink"];
+            this.Count = (int)row["count"];
         }
 
         private int iD;
         private int iDBill;
-        private int iDFood;
-        private int iDDrink;
-        private int countf;
-        private int countd;
+        private int iDFoodOrDrink;
+        private int count;
 
         public int ID { get => iD; set => iD = value; }
         public int IDBill { get => iDBill; set => iDBill = value; }
-        public int IDFood { get => iDFood; set => iDFood = value; }
-        public int IDDrink { get => iDDrink; set => iDDrink = value; }
-        public int Countf { get => countf; set => countf = value; }
-        public int Countd { get => countd; set => countd = value; }
+        public int IDFoodOrDrink { get => iDFoodOrDrink; set => iDFoodOrDrink = value; }
+        public int Count { get => count; set => count = value; }
     }
 }

@@ -23,7 +23,7 @@ namespace do_an.DAO
         {
             List<MenuDTO> ListMenu = new List<MenuDTO>();
 
-            string query = "SELECT Food.tenhienthi, BillInfo.countf, Food.gia, BillInfo.countf*Food.gia AS 'Tonggiaf', Drink.tenhienthi, BillInfo.countd, Drink.gia, BillInfo.countd*Drink.gia AS 'Tonggiad'  FROM BillInfo, Bill, Food, Drink WHERE BillInfo.idBill = Bill.id AND BillInfo.idFood = Food.id AND BillInfo.idDrink = Drink.id AND Bill.idTable = " + id;
+            string query = "SELECT FoodAndDrink.tenhienthi, BillInfo.count, FoodAndDrink.gia, BillInfo.count*FoodAndDrink.gia AS 'Tonggia'FROM BillInfo, Bill, FoodAndDrink WHERE BillInfo.idBill = Bill.id AND BillInfo.idFoodOrDrink = FoodAndDrink.id AND Bill.idTable = " + id;
             DataTable data = Dataprovider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
