@@ -53,7 +53,7 @@ CREATE TABLE Bill
 (
 	id INT IDENTITY PRIMARY KEY,
 	ngayvaogiovao DATETIME NOT NULL DEFAULT GETDATE(),
-	ngayragiora DATETIME NOT NULL,
+	ngayragiora DATETIME ,
 	idTable INT NOT NULL,
 	tinhtrang INT NOT NULL DEFAULT 0, -- 1: da thanh toan, 0: chua thanh toan
 	tonggia INT NOT NULL
@@ -74,7 +74,7 @@ CREATE TABLE BillInfo
 )
 GO
 
-DROP TABLE BillInfo
+DROP TABLE Bill
 
 CREATE PROC USP_GetAccountByUserName-- thủ tục lưu trữ được dùng để thực hiện một xử lí nhắt định(bảo mất cao)
 @userName nvarchar (100)
@@ -178,33 +178,83 @@ GO
 INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 4, 1, 0)
 INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 6, 1, 0)
 INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 9, 1, 0)
+INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), NULL, 7, 0, 0)
 GO
 --bill info 
-INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (1, 4, 4)
-INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (2, 14, 2)
-INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (1, 9, 3)
+INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (2, 4, 4)
+INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (3, 14, 2)
+INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (2, 9, 3)
+INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (1, 7, 3)
 GO
 
-CREATE PROC USP_Bill--chua them vao vs
+CREATE PROC USP_Bills--da them vao vs
+@IdTable int 
 AS
-	SELECT* FROM Bill WHERE idTable = 14 AND tinhtrang = 1
+BEGIN
+	SELECT* FROM Bill WHERE idTable = @IdTable AND tinhtrang = 1
+END
 GO
-EXEC USP_Bill
+EXEC USP_Bills @IdTable = 7
 GO
 
-CREATE PROC USP_BillInfo--chua them vao vs
+CREATE PROC USP_BillInfos
+@IdTable int
 AS
-	SELECT Food.tenhienthi, BillInfo.countf, Food.gia, BillInfo.countf*Food.gia, Drink.tenhienthi, BillInfo.countd, Drink.gia, BillInfo.countd*Drink.gia  
-	FROM BillInfo, Bill, Food, Drink 
-	WHERE BillInfo.idBill = Bill.id AND BillInfo.idFood = Food.id AND BillInfo.idDrink = Drink.id AND Bill.idTable = 
+BEGIN
+	SELECT FoodAndDrink.tenhienthi, BillInfo.count, FoodAndDrink.gia, BillInfo.count*FoodAndDrink.gia AS 'Tonggia'FROM BillInfo, Bill, FoodAndDrink 
+	WHERE BillInfo.idBill = Bill.id AND BillInfo.idFoodOrDrink = FoodAndDrink.id AND Bill.tinhtrang = 0 AND Bill.idTable = @IdTable
+END
 GO
-EXEC USP_BillInfo
+EXEC USP_BillInfos @IdTable 
 GO
 
-SELECT* FROM Bill WHERE idTable = 14 AND tinhtrang = 1
+SELECT* FROM Bill WHERE idTable = 4 AND tinhtrang = 1
 SELECT FoodAndDrink.tenhienthi, BillInfo.count, FoodAndDrink.gia, BillInfo.count*FoodAndDrink.gia AS 'Tonggia'FROM BillInfo, Bill, FoodAndDrink 
 WHERE BillInfo.idBill = Bill.id AND BillInfo.idFoodOrDrink = FoodAndDrink.id AND Bill.idTable = 4
+GO
 
+CREATE PROC USP_Catagory
+AS
+	SELECT* FROM FoodAndDrinkCatagory
+GO
+EXEC USP_Catagory
+GO
+
+CREATE PROC USP_FoD
+@idcatagory int
+AS
+BEGIN
+	SELECT* FROM FoodAndDrink WHERE idCatagory = @idcatagory
+END
+GO
+EXEC USP_FoD @idcatagory 
+GO
+
+CREATE PROC USP_InsertBill
+@idTable int
+AS
+BEGIN
+	INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), NULL, @idTable, 0, 0)
+END
+GO
+EXEC USP_InsertBill @idTable
+GO
+
+CREATE PROC USP_InsertBillInfo
+@idBill int,
+@idFoD int,
+@count int
+AS
+BEGIN
+	INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (@idBill, @idFoD, @count)
+END
+GO
+EXEC USP_InsertBillInfo @idBill , @idFoD , @count
+GO
+
+SELECT MAX(id) FROM Bill
+
+--them bot mon t-sql
 SELECT* FROM TableBida
 SELECT* FROM Bill
 SELECT* FROM BillInfo	

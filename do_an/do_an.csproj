@@ -61,11 +61,15 @@
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
     <Compile Include="DAO\BillInfoDAO.cs" />
+    <Compile Include="DAO\CatagoryDAO.cs" />
     <Compile Include="DAO\Dataprovider.cs" />
+    <Compile Include="DAO\FoDDAO.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\TableDAO.cs" />
     <Compile Include="DTO\BillDTO.cs" />
     <Compile Include="DTO\BillInfoDTO.cs" />
+    <Compile Include="DTO\CatagoryDTO.cs" />
+    <Compile Include="DTO\FoDDTO.cs" />
     <Compile Include="DTO\MenuDTO.cs" />
     <Compile Include="DTO\TableDTO.cs" />
     <Compile Include="Login.cs">

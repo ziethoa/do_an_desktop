@@ -18,8 +18,20 @@ namespace do_an
         {
             InitializeComponent();
             LoadTable();
+            LoadCatagory();
         }
-
+        void LoadCatagory()
+        {
+            List<CatagoryDTO> ListCatagory = CatagoryDAO.Instance.GetListCatagory();
+            cbCatagoryFoodOrDrink.DataSource = ListCatagory;
+            cbCatagoryFoodOrDrink.DisplayMember = "Name";//phần Name bên DTO : cho biết rõ nó cần hiển thị trường nào trong database, nếu kh nó chỉ hiện tên của cả cái bảng
+        }
+        void LoadFoDListByCatagory(int id) 
+        {
+            List<FoDDTO> ListFoD = FoDDAO.Instance.GetFoodOrDrinkByCatagoryID(id);
+            cbFoodOrDrink.DataSource = ListFoD;
+            cbFoodOrDrink.DisplayMember = "Name";
+        }
         void LoadTable()
         {
             List<TableDTO> TableList = TableDAO.Instance.LoadTableList();
@@ -47,20 +59,22 @@ namespace do_an
         {
             lsvBills.Items.Clear();
             List<MenuDTO> listBillInfo = MenuDAO.Instance.GetListMenuByTable(id);
-
+            int TotalPriceAll = 0;
             foreach(MenuDTO item in listBillInfo)
             {
                 ListViewItem lsvItem = new ListViewItem(item.FoodOrDrinkName.ToString());
                 lsvItem.SubItems.Add(item.Count.ToString());
                 lsvItem.SubItems.Add(item.Price.ToString());
                 lsvItem.SubItems.Add(item.TotalPrice.ToString());
-
+                TotalPriceAll += item.TotalPrice;
                 lsvBills.Items.Add(lsvItem);
             }
+            txtTotalPriceAll.Text = TotalPriceAll.ToString("c");
         }
         private void btn_Click(object sender, EventArgs e)
         {
             int TableID = ((sender as Button).Tag as TableDTO).ID;
+            lsvBills.Tag = (sender as Button).Tag;
             ShowBill(TableID);
         }
 
@@ -77,6 +91,35 @@ namespace do_an
         {
             Admin f = new Admin();
             f.ShowDialog();
+        }
+
+        private void cbCatagoryFoodOrDrink_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+            CatagoryDTO selected = cb.SelectedItem as CatagoryDTO;
+            id = selected.ID;
+            LoadFoDListByCatagory( id);
+        }
+
+        private void btnAddFoodOrDrink_Click(object sender, EventArgs e)
+        {
+            TableDTO table = lsvBills.Tag as TableDTO;
+
+            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+            int idFood = (cbFoodOrDrink.SelectedItem as FoDDTO).ID;
+            int count = (int)FoodAndDrinkCount.Value;
+            if(idBill == -1)//bill chua ton tai, them bill
+            {
+                BillDAO.Instance.InsertBill(table.ID);
+                BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxIdBill(), idFood, count);
+            }
+            else//bill da ton tai
+            {
+                BillInfoDAO.Instance.InsertBillInfo(idBill, idFood, count);
+            }
         }
     }
 }

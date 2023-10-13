@@ -33,5 +33,11 @@ namespace do_an.DAO
 
             return listBillInfo;
         }
+
+        public void InsertBillInfo(int idBill, int idFoD, int Count)
+        {
+            string query = "USP_InsertBillInfo @idBill , @idFoD , @count";
+            Dataprovider.Instance.ExecuteQuery(query, new object[] { idBill, idFoD, Count });
+        }
     }
 }

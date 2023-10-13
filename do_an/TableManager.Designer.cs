@@ -41,6 +41,8 @@ namespace do_an
             this.lsvBills = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pAbate = new System.Windows.Forms.Panel();
             this.btnTimeFinish = new System.Windows.Forms.Button();
             this.btnAbate = new System.Windows.Forms.Button();
@@ -51,41 +53,33 @@ namespace do_an
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pDrink = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.DrinkCount = new System.Windows.Forms.NumericUpDown();
-            this.btnAddDrink = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbDrink = new System.Windows.Forms.ComboBox();
-            this.cbCatagoryDrink = new System.Windows.Forms.ComboBox();
-            this.pFood = new System.Windows.Forms.Panel();
+            this.pFoodAndDrink = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.FoodCount = new System.Windows.Forms.NumericUpDown();
-            this.btnAddFood = new System.Windows.Forms.Button();
+            this.FoodAndDrinkCount = new System.Windows.Forms.NumericUpDown();
+            this.btnAddFoodOrDrink = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbFood = new System.Windows.Forms.ComboBox();
-            this.cbCatagoryFood = new System.Windows.Forms.ComboBox();
+            this.cbFoodOrDrink = new System.Windows.Forms.ComboBox();
+            this.cbCatagoryFoodOrDrink = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.pSwitchTable = new System.Windows.Forms.Panel();
             this.btnSwitchTable = new System.Windows.Forms.Button();
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTotalPriceAll = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pAbate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).BeginInit();
             this.panel5.SuspendLayout();
-            this.pDrink.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DrinkCount)).BeginInit();
-            this.pFood.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FoodCount)).BeginInit();
+            this.pFoodAndDrink.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodAndDrinkCount)).BeginInit();
             this.pSwitchTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -176,10 +170,22 @@ namespace do_an
             // columnHeader1
             // 
             this.columnHeader1.Text = "Tên món ăn";
+            this.columnHeader1.Width = 91;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Số lượng";
+            this.columnHeader2.Width = 75;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Đơn  giá";
+            this.columnHeader3.Width = 76;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Tổng giá";
+            this.columnHeader4.Width = 96;
             // 
             // pAbate
             // 
@@ -278,111 +284,25 @@ namespace do_an
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.pDrink);
-            this.panel5.Controls.Add(this.pFood);
-            this.panel5.Location = new System.Drawing.Point(993, 64);
+            this.panel5.Controls.Add(this.pFoodAndDrink);
+            this.panel5.Location = new System.Drawing.Point(993, 196);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(371, 245);
+            this.panel5.Size = new System.Drawing.Size(371, 113);
             this.panel5.TabIndex = 4;
             // 
-            // pDrink
+            // pFoodAndDrink
             // 
-            this.pDrink.Controls.Add(this.label4);
-            this.pDrink.Controls.Add(this.label5);
-            this.pDrink.Controls.Add(this.DrinkCount);
-            this.pDrink.Controls.Add(this.btnAddDrink);
-            this.pDrink.Controls.Add(this.label6);
-            this.pDrink.Controls.Add(this.cbDrink);
-            this.pDrink.Controls.Add(this.cbCatagoryDrink);
-            this.pDrink.Location = new System.Drawing.Point(3, 127);
-            this.pDrink.Name = "pDrink";
-            this.pDrink.Size = new System.Drawing.Size(360, 115);
-            this.pDrink.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(14, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Món:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(14, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 17);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Loại: ";
-            // 
-            // DrinkCount
-            // 
-            this.DrinkCount.Location = new System.Drawing.Point(273, 72);
-            this.DrinkCount.Name = "DrinkCount";
-            this.DrinkCount.Size = new System.Drawing.Size(74, 22);
-            this.DrinkCount.TabIndex = 4;
-            this.DrinkCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DrinkCount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // btnAddDrink
-            // 
-            this.btnAddDrink.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAddDrink.Location = new System.Drawing.Point(240, 32);
-            this.btnAddDrink.Name = "btnAddDrink";
-            this.btnAddDrink.Size = new System.Drawing.Size(107, 35);
-            this.btnAddDrink.TabIndex = 3;
-            this.btnAddDrink.Text = "Thêm món";
-            this.btnAddDrink.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(3, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 20);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Đồ uống";
-            // 
-            // cbDrink
-            // 
-            this.cbDrink.FormattingEnabled = true;
-            this.cbDrink.Location = new System.Drawing.Point(63, 71);
-            this.cbDrink.Name = "cbDrink";
-            this.cbDrink.Size = new System.Drawing.Size(154, 24);
-            this.cbDrink.TabIndex = 1;
-            // 
-            // cbCatagoryDrink
-            // 
-            this.cbCatagoryDrink.FormattingEnabled = true;
-            this.cbCatagoryDrink.Location = new System.Drawing.Point(63, 32);
-            this.cbCatagoryDrink.Name = "cbCatagoryDrink";
-            this.cbCatagoryDrink.Size = new System.Drawing.Size(154, 24);
-            this.cbCatagoryDrink.TabIndex = 0;
-            // 
-            // pFood
-            // 
-            this.pFood.Controls.Add(this.label3);
-            this.pFood.Controls.Add(this.label2);
-            this.pFood.Controls.Add(this.FoodCount);
-            this.pFood.Controls.Add(this.btnAddFood);
-            this.pFood.Controls.Add(this.label1);
-            this.pFood.Controls.Add(this.cbFood);
-            this.pFood.Controls.Add(this.cbCatagoryFood);
-            this.pFood.Location = new System.Drawing.Point(3, 6);
-            this.pFood.Name = "pFood";
-            this.pFood.Size = new System.Drawing.Size(360, 115);
-            this.pFood.TabIndex = 2;
+            this.pFoodAndDrink.Controls.Add(this.label3);
+            this.pFoodAndDrink.Controls.Add(this.label2);
+            this.pFoodAndDrink.Controls.Add(this.FoodAndDrinkCount);
+            this.pFoodAndDrink.Controls.Add(this.btnAddFoodOrDrink);
+            this.pFoodAndDrink.Controls.Add(this.label1);
+            this.pFoodAndDrink.Controls.Add(this.cbFoodOrDrink);
+            this.pFoodAndDrink.Controls.Add(this.cbCatagoryFoodOrDrink);
+            this.pFoodAndDrink.Location = new System.Drawing.Point(3, 3);
+            this.pFoodAndDrink.Name = "pFoodAndDrink";
+            this.pFoodAndDrink.Size = new System.Drawing.Size(365, 105);
+            this.pFoodAndDrink.TabIndex = 2;
             // 
             // label3
             // 
@@ -405,28 +325,29 @@ namespace do_an
             this.label2.TabIndex = 5;
             this.label2.Text = "Loại: ";
             // 
-            // FoodCount
+            // FoodAndDrinkCount
             // 
-            this.FoodCount.Location = new System.Drawing.Point(273, 72);
-            this.FoodCount.Name = "FoodCount";
-            this.FoodCount.Size = new System.Drawing.Size(74, 22);
-            this.FoodCount.TabIndex = 4;
-            this.FoodCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FoodCount.Value = new decimal(new int[] {
+            this.FoodAndDrinkCount.Location = new System.Drawing.Point(273, 72);
+            this.FoodAndDrinkCount.Name = "FoodAndDrinkCount";
+            this.FoodAndDrinkCount.Size = new System.Drawing.Size(74, 22);
+            this.FoodAndDrinkCount.TabIndex = 4;
+            this.FoodAndDrinkCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FoodAndDrinkCount.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // btnAddFood
+            // btnAddFoodOrDrink
             // 
-            this.btnAddFood.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAddFood.Location = new System.Drawing.Point(240, 32);
-            this.btnAddFood.Name = "btnAddFood";
-            this.btnAddFood.Size = new System.Drawing.Size(107, 35);
-            this.btnAddFood.TabIndex = 3;
-            this.btnAddFood.Text = "Thêm món";
-            this.btnAddFood.UseVisualStyleBackColor = true;
+            this.btnAddFoodOrDrink.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAddFoodOrDrink.Location = new System.Drawing.Point(240, 32);
+            this.btnAddFoodOrDrink.Name = "btnAddFoodOrDrink";
+            this.btnAddFoodOrDrink.Size = new System.Drawing.Size(107, 35);
+            this.btnAddFoodOrDrink.TabIndex = 3;
+            this.btnAddFoodOrDrink.Text = "Thêm món";
+            this.btnAddFoodOrDrink.UseVisualStyleBackColor = true;
+            this.btnAddFoodOrDrink.Click += new System.EventHandler(this.btnAddFoodOrDrink_Click);
             // 
             // label1
             // 
@@ -435,25 +356,26 @@ namespace do_an
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 20);
+            this.label1.Size = new System.Drawing.Size(181, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Thức Ăn";
+            this.label1.Text = "Thức Ăn và Đồ Uống";
             // 
-            // cbFood
+            // cbFoodOrDrink
             // 
-            this.cbFood.FormattingEnabled = true;
-            this.cbFood.Location = new System.Drawing.Point(63, 71);
-            this.cbFood.Name = "cbFood";
-            this.cbFood.Size = new System.Drawing.Size(154, 24);
-            this.cbFood.TabIndex = 1;
+            this.cbFoodOrDrink.FormattingEnabled = true;
+            this.cbFoodOrDrink.Location = new System.Drawing.Point(63, 71);
+            this.cbFoodOrDrink.Name = "cbFoodOrDrink";
+            this.cbFoodOrDrink.Size = new System.Drawing.Size(154, 24);
+            this.cbFoodOrDrink.TabIndex = 1;
             // 
-            // cbCatagoryFood
+            // cbCatagoryFoodOrDrink
             // 
-            this.cbCatagoryFood.FormattingEnabled = true;
-            this.cbCatagoryFood.Location = new System.Drawing.Point(63, 32);
-            this.cbCatagoryFood.Name = "cbCatagoryFood";
-            this.cbCatagoryFood.Size = new System.Drawing.Size(154, 24);
-            this.cbCatagoryFood.TabIndex = 0;
+            this.cbCatagoryFoodOrDrink.FormattingEnabled = true;
+            this.cbCatagoryFoodOrDrink.Location = new System.Drawing.Point(63, 32);
+            this.cbCatagoryFoodOrDrink.Name = "cbCatagoryFoodOrDrink";
+            this.cbCatagoryFoodOrDrink.Size = new System.Drawing.Size(154, 24);
+            this.cbCatagoryFoodOrDrink.TabIndex = 0;
+            this.cbCatagoryFoodOrDrink.SelectedIndexChanged += new System.EventHandler(this.cbCatagoryFoodOrDrink_SelectedIndexChanged);
             // 
             // flpTable
             // 
@@ -507,13 +429,35 @@ namespace do_an
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // columnHeader3
+            // panel1
             // 
-            this.columnHeader3.Text = "Đơn  giá";
+            this.panel1.Controls.Add(this.txtTotalPriceAll);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(993, 93);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(371, 100);
+            this.panel1.TabIndex = 7;
             // 
-            // columnHeader4
+            // txtTotalPriceAll
             // 
-            this.columnHeader4.Text = "Tổng giá";
+            this.txtTotalPriceAll.Location = new System.Drawing.Point(118, 43);
+            this.txtTotalPriceAll.Name = "txtTotalPriceAll";
+            this.txtTotalPriceAll.ReadOnly = true;
+            this.txtTotalPriceAll.Size = new System.Drawing.Size(147, 22);
+            this.txtTotalPriceAll.TabIndex = 8;
+            this.txtTotalPriceAll.Text = "0";
+            this.txtTotalPriceAll.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(145, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 20);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Tổng tiền";
             // 
             // TableManager
             // 
@@ -521,6 +465,7 @@ namespace do_an
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1378, 517);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pSwitchTable);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.panel5);
@@ -532,7 +477,7 @@ namespace do_an
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "TableManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản Lý Quán Bida";
+            this.Text = " ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -540,15 +485,14 @@ namespace do_an
             this.pAbate.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).EndInit();
             this.panel5.ResumeLayout(false);
-            this.pDrink.ResumeLayout(false);
-            this.pDrink.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DrinkCount)).EndInit();
-            this.pFood.ResumeLayout(false);
-            this.pFood.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FoodCount)).EndInit();
+            this.pFoodAndDrink.ResumeLayout(false);
+            this.pFoodAndDrink.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodAndDrinkCount)).EndInit();
             this.pSwitchTable.ResumeLayout(false);
             this.pSwitchTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,21 +509,13 @@ namespace do_an
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pAbate;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel pFood;
+        private System.Windows.Forms.Panel pFoodAndDrink;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbFood;
-        private System.Windows.Forms.ComboBox cbCatagoryFood;
-        private System.Windows.Forms.NumericUpDown FoodCount;
-        private System.Windows.Forms.Button btnAddFood;
+        private System.Windows.Forms.ComboBox cbFoodOrDrink;
+        private System.Windows.Forms.ComboBox cbCatagoryFoodOrDrink;
+        private System.Windows.Forms.NumericUpDown FoodAndDrinkCount;
+        private System.Windows.Forms.Button btnAddFoodOrDrink;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel pDrink;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown DrinkCount;
-        private System.Windows.Forms.Button btnAddDrink;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbDrink;
-        private System.Windows.Forms.ComboBox cbCatagoryDrink;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flpTable;
@@ -600,5 +536,8 @@ namespace do_an
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtTotalPriceAll;
+        private System.Windows.Forms.Label label4;
     }
 }

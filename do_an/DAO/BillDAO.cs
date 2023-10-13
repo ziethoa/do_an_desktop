@@ -21,7 +21,8 @@ namespace do_an.DAO
 
         public int GetUncheckBillIDByTableID(int id)
         {
-            DataTable data = Dataprovider.Instance.ExecuteQuery("SELECT* FROM Bill WHERE idTable = " + id +" AND tinhtrang = 1");
+            string query = "USP_Bills @IdTable";
+            DataTable data = Dataprovider.Instance.ExecuteQuery(query, new object[] { id});
             if(data.Rows.Count > 0)
             {
                 BillDTO bill = new BillDTO(data.Rows[0]);
@@ -30,5 +31,21 @@ namespace do_an.DAO
             return -1;
         }
         //thanh cong : bill id - that bai: -1
+
+        public void InsertBill(int id)
+        {
+            Dataprovider.Instance.ExecuteQuery("USP_InsertBill @idTable", new object[] { id });
+        }
+        public int GetMaxIdBill()
+        {
+            try
+            {
+                return (int)Dataprovider.Instance.ExecuteScalar("SELECT MAX(id) FROM Bill");
+            }
+            catch
+            {
+                return 1;
+            }
+        }
     }
 }
