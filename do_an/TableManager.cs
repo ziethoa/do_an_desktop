@@ -34,6 +34,7 @@ namespace do_an
         }
         void LoadTable()
         {
+            flpTable.Controls.Clear();
             List<TableDTO> TableList = TableDAO.Instance.LoadTableList();
 
             foreach(TableDTO item in TableList)
@@ -122,20 +123,27 @@ namespace do_an
             }
 
             ShowBill(table.ID);
+
+            LoadTable();
         }
 
         private void btnAbate_Click(object sender, EventArgs e)
         {
             TableDTO table = lsvBills.Tag as TableDTO;
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+            int discount = (int)numDiscount.Value;
             if(idBill != -1)
             {
                 if (MessageBox.Show("Bạn có chắc thanh toán cho " + table.Name, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {
-                    BillDAO.Instance.checkout(idBill);
+                {//sửa tiếp + thêm phần giá tiền cho bàn
+                    BillDAO.Instance.checkout(idBill, discount);
                     ShowBill(table.ID);
+
+                    LoadTable();
                 }
             }
         }
+
+       
     }
 }

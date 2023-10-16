@@ -61,6 +61,9 @@ CREATE TABLE Bill
 	FOREIGN KEY (idTable) REFERENCES dbo.TableBida(id)
 )
 GO
+ALTER TABLE Bill
+ADD giamgia int
+UPDATE Bill SET giamgia = 0
 
 CREATE TABLE BillInfo
 (
@@ -234,7 +237,7 @@ CREATE PROC USP_InsertBill
 @idTable int
 AS
 BEGIN
-	INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), NULL, @idTable, 0, 0)
+	INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia, giamgia) VALUES (GETDATE(), NULL, @idTable, 0, 0, 0)
 END
 GO
 EXEC USP_InsertBill @idTable
@@ -249,7 +252,8 @@ BEGIN
 	INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (@idBill, @idFoD, @count)
 END
 GO
-EXEC USP_InsertBillInfo @idBill , @idFoD , @count
+
+EXEC USP_InsertBillInfo @idBill = 2 , @idFoD = 1 , @count = 1
 GO
 
 --sửa proc
@@ -259,8 +263,8 @@ ALTER PROC USP_InsertBillInfo
 @count int
 AS
 BEGIN
-	DECLARE @isExistBillInfo int
-	DECLARE @FoDcount int = 0
+	DECLARE @isExistBillInfo int = 0
+	DECLARE @FoDcount int = 1
 
 	SELECT @isExistBillInfo = id, @FoDcount = BillInfo.count FROM BillInfo WHERE idBill = @idBill AND idFoodOrDrink = @idFoD
 
@@ -268,7 +272,7 @@ BEGIN
 	BEGIN
 		DECLARE @NewCount int = @FoDcount + @count
 		IF (@NewCount > 0)
-			UPDATE BillInfo SET BillInfo.count = @FoDcount + @count WHERE idFoodOrDrink = @idFoD AND idBill = @idBill
+			UPDATE BillInfo SET BillInfo.count = @FoDcount + @count WHERE idFoodOrDrink = @idFoD
 		ELSE
 			DELETE BillInfo WHERE idBill = @idBill AND idFoodOrDrink = @idFoD
 	END 
@@ -279,11 +283,44 @@ BEGIN
 END
 GO
 
+SELECT* FROM Bill WHERE idTable = 1 AND tinhtrang = 0
+
+SELECT id,count FROM BillInfo WHERE idBill = 5 
+
 SELECT MAX(id) FROM Bill
 
 --them bot mon t-sql
 
 UPDATE Bill SET tinhtrang = 1 WHERE id = 1
+
+
+
+CREATE TRIGGER UTG_UpdateBillInfo
+ON BillInfo FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @idBill int
+	SELECT @idBill = idBill FROM inserted
+	DECLARE @idTable int
+	SELECT @idTable = idTable FROM Bill WHERE id = @idBill AND tinhtrang = 0
+	UPDATE TableBida SET tinhtrang = N'Có người' WHERE id = @idTable
+END
+GO
+
+ALTER TRIGGER UTG_UpdateBill
+ON Bill FOR UPDATE
+AS 
+BEGIN
+	DECLARE @idBill int
+	SELECT @idBill = id FROM inserted
+	DECLARE	@idTable int
+	SELECT @idTable = idTable FROM Bill WHERE id = @idBill
+	DECLARE @count int = 0
+	SELECT @count = COUNT(*) FROM Bill WHERE idTable = @idTable AND tinhtrang = 0
+	IF(@count = 0)
+		UPDATE TableBida SET tinhtrang = N'Trống' WHERE id = @idTable
+END
+GO
 
 SELECT* FROM TableBida
 SELECT* FROM Bill

@@ -62,10 +62,6 @@ namespace do_an
             this.cbFoodOrDrink = new System.Windows.Forms.ComboBox();
             this.cbCatagoryFoodOrDrink = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.pSwitchTable = new System.Windows.Forms.Panel();
-            this.btnSwitchTable = new System.Windows.Forms.Button();
-            this.cbTable = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTotalPriceAll = new System.Windows.Forms.TextBox();
@@ -77,7 +73,6 @@ namespace do_an
             this.panel5.SuspendLayout();
             this.pFoodAndDrink.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FoodAndDrinkCount)).BeginInit();
-            this.pSwitchTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -391,45 +386,6 @@ namespace do_an
             this.flpTable.Size = new System.Drawing.Size(460, 505);
             this.flpTable.TabIndex = 5;
             // 
-            // pSwitchTable
-            // 
-            this.pSwitchTable.Controls.Add(this.btnSwitchTable);
-            this.pSwitchTable.Controls.Add(this.cbTable);
-            this.pSwitchTable.Controls.Add(this.label10);
-            this.pSwitchTable.Location = new System.Drawing.Point(637, 400);
-            this.pSwitchTable.Name = "pSwitchTable";
-            this.pSwitchTable.Size = new System.Drawing.Size(350, 112);
-            this.pSwitchTable.TabIndex = 6;
-            // 
-            // btnSwitchTable
-            // 
-            this.btnSwitchTable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSwitchTable.Location = new System.Drawing.Point(112, 55);
-            this.btnSwitchTable.Name = "btnSwitchTable";
-            this.btnSwitchTable.Size = new System.Drawing.Size(107, 35);
-            this.btnSwitchTable.TabIndex = 12;
-            this.btnSwitchTable.Text = "Chuyển bàn";
-            this.btnSwitchTable.UseVisualStyleBackColor = true;
-            // 
-            // cbTable
-            // 
-            this.cbTable.FormattingEnabled = true;
-            this.cbTable.Location = new System.Drawing.Point(157, 18);
-            this.cbTable.Name = "cbTable";
-            this.cbTable.Size = new System.Drawing.Size(143, 24);
-            this.cbTable.TabIndex = 7;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(39, 21);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 17);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Chuyển bàn";
-            // 
             // fileSystemWatcher1
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
@@ -472,7 +428,6 @@ namespace do_an
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1378, 517);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pSwitchTable);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.pAbate);
@@ -494,8 +449,6 @@ namespace do_an
             this.pFoodAndDrink.ResumeLayout(false);
             this.pFoodAndDrink.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FoodAndDrinkCount)).EndInit();
-            this.pSwitchTable.ResumeLayout(false);
-            this.pSwitchTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -531,10 +484,6 @@ namespace do_an
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnAbate;
-        private System.Windows.Forms.Panel pSwitchTable;
-        private System.Windows.Forms.Button btnSwitchTable;
-        private System.Windows.Forms.ComboBox cbTable;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnTimeFinish;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.ListView lsvBills;

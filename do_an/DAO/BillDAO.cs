@@ -31,9 +31,9 @@ namespace do_an.DAO
         }
         //thanh cong : bill id - that bai: -1
 
-        public void checkout(int id)
+        public void checkout(int id, int discount)
         {
-            string query = "UPDATE Bill SET tinhtrang = 1 WHERE id = " + id;
+            string query = "UPDATE Bill SET tinhtrang = 1, " + "giamgia = " + discount + " WHERE id = " + id;
             Dataprovider.Instance.ExecuteNonQuery(query);//ddang lam cho nay
         }
 
