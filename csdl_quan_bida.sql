@@ -169,7 +169,7 @@ GO
 --reset id identity
 DELETE FROM TableBida
 DELETE FROM Bill
-DELETE FROM BillInfo
+DELETE FROM BillInfo 
 DBCC CHECKIDENT(TableBida, RESEED, 0)
 DBCC CHECKIDENT(Bill, RESEED, 0)
 DBCC CHECKIDENT(BillInfo, RESEED, 0)
@@ -252,9 +252,39 @@ GO
 EXEC USP_InsertBillInfo @idBill , @idFoD , @count
 GO
 
+--sửa proc
+ALTER PROC USP_InsertBillInfo
+@idBill int,
+@idFoD int,
+@count int
+AS
+BEGIN
+	DECLARE @isExistBillInfo int
+	DECLARE @FoDcount int = 0
+
+	SELECT @isExistBillInfo = id, @FoDcount = BillInfo.count FROM BillInfo WHERE idBill = @idBill AND idFoodOrDrink = @idFoD
+
+	IF(@isExistBillInfo > 0)
+	BEGIN
+		DECLARE @NewCount int = @FoDcount + @count
+		IF (@NewCount > 0)
+			UPDATE BillInfo SET BillInfo.count = @FoDcount + @count WHERE idFoodOrDrink = @idFoD AND idBill = @idBill
+		ELSE
+			DELETE BillInfo WHERE idBill = @idBill AND idFoodOrDrink = @idFoD
+	END 
+	ELSE
+	BEGIN
+		INSERT INTO BillInfo (idBill, idFoodOrDrink, BillInfo.count) VALUES (@idBill, @idFoD, @count)
+	END
+END
+GO
+
 SELECT MAX(id) FROM Bill
 
 --them bot mon t-sql
+
+UPDATE Bill SET tinhtrang = 1 WHERE id = 1
+
 SELECT* FROM TableBida
 SELECT* FROM Bill
 SELECT* FROM BillInfo	

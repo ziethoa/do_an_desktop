@@ -221,6 +221,7 @@ namespace do_an
             this.btnAbate.TabIndex = 7;
             this.btnAbate.Text = "Thanh toán";
             this.btnAbate.UseVisualStyleBackColor = true;
+            this.btnAbate.Click += new System.EventHandler(this.btnAbate_Click);
             // 
             // numDiscount
             // 
@@ -328,6 +329,11 @@ namespace do_an
             // FoodAndDrinkCount
             // 
             this.FoodAndDrinkCount.Location = new System.Drawing.Point(273, 72);
+            this.FoodAndDrinkCount.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.FoodAndDrinkCount.Name = "FoodAndDrinkCount";
             this.FoodAndDrinkCount.Size = new System.Drawing.Size(74, 22);
             this.FoodAndDrinkCount.TabIndex = 4;

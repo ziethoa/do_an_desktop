@@ -120,6 +120,22 @@ namespace do_an
             {
                 BillInfoDAO.Instance.InsertBillInfo(idBill, idFood, count);
             }
+
+            ShowBill(table.ID);
+        }
+
+        private void btnAbate_Click(object sender, EventArgs e)
+        {
+            TableDTO table = lsvBills.Tag as TableDTO;
+            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+            if(idBill != -1)
+            {
+                if (MessageBox.Show("Bạn có chắc thanh toán cho " + table.Name, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    BillDAO.Instance.checkout(idBill);
+                    ShowBill(table.ID);
+                }
+            }
         }
     }
 }

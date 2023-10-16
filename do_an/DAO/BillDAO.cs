@@ -18,11 +18,10 @@ namespace do_an.DAO
             private set { instance = value; } 
         }
         private BillDAO() { }
-
         public int GetUncheckBillIDByTableID(int id)
         {
-            string query = "USP_Bills @IdTable";
-            DataTable data = Dataprovider.Instance.ExecuteQuery(query, new object[] { id});
+            string query = "SELECT* FROM Bill WHERE idTable = " + id + " AND tinhtrang = 0" ;
+            DataTable data = Dataprovider.Instance.ExecuteQuery(query);
             if(data.Rows.Count > 0)
             {
                 BillDTO bill = new BillDTO(data.Rows[0]);
@@ -31,6 +30,12 @@ namespace do_an.DAO
             return -1;
         }
         //thanh cong : bill id - that bai: -1
+
+        public void checkout(int id)
+        {
+            string query = "UPDATE Bill SET tinhtrang = 1 WHERE id = " + id;
+            Dataprovider.Instance.ExecuteNonQuery(query);//ddang lam cho nay
+        }
 
         public void InsertBill(int id)
         {

@@ -36,8 +36,7 @@ namespace do_an.DAO
 
         public void InsertBillInfo(int idBill, int idFoD, int Count)
         {
-            string query = "USP_InsertBillInfo @idBill , @idFoD , @count";
-            Dataprovider.Instance.ExecuteQuery(query, new object[] { idBill, idFoD, Count });
+            Dataprovider.Instance.ExecuteNonQuery("USP_InsertBillInfo @idBill , @idFoD , @count" , new object[] { idBill, idFoD, Count });
         }
     }
 }
