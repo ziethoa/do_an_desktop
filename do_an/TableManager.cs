@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace do_an
             LoadTable();
             LoadCatagory();
         }
+        private Stopwatch stopwatch = new Stopwatch();
         void LoadCatagory()
         {
             List<CatagoryDTO> ListCatagory = CatagoryDAO.Instance.GetListCatagory();
@@ -74,6 +76,9 @@ namespace do_an
         }
         private void btn_Click(object sender, EventArgs e)
         {
+            stopwatch.Start();
+            DateTime cutime = DateTime.Now;
+            txtTimeStart.Text = cutime.ToString();
             int TableID = ((sender as Button).Tag as TableDTO).ID;
             lsvBills.Tag = (sender as Button).Tag;
             ShowBill(TableID);
@@ -129,13 +134,25 @@ namespace do_an
 
         private void btnAbate_Click(object sender, EventArgs e)
         {
+            stopwatch.Stop();
+            float elapsedSeconds = (float)stopwatch.Elapsed.TotalSeconds;
+            float elapsedHours = elapsedSeconds / 3600;
+
+            DateTime cutime = DateTime.Now;
+            txtTimeFinish.Text = cutime.ToString();
+
             TableDTO table = lsvBills.Tag as TableDTO;
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
             int discount = (int)numDiscount.Value;
+
+            float tableprice = elapsedHours * 70000;
+            double totalPrice = Convert.ToDouble(txtTotalPriceAll.Text.Split(',')[0]);
+            double finalTotalPrice = (tableprice - (tableprice/100 * discount)) + totalPrice;
+
             if(idBill != -1)
             {
-                if (MessageBox.Show("Bạn có chắc thanh toán cho " + table.Name, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {//sửa tiếp + thêm phần giá tiền cho bàn
+                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán cho {0}\nSố giờ: {5}\n( Tiền bàn - (Tiền bàn / 100) x giảm giá ) + Tiền đồ ăn\n==> ( {4} - ( {4} / 100) x {2} ) + {1} = {3} ", table.Name, totalPrice, discount, finalTotalPrice, tableprice, elapsedHours), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
                     BillDAO.Instance.checkout(idBill, discount);
                     ShowBill(table.ID);
 
