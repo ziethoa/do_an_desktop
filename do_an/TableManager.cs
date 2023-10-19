@@ -153,7 +153,7 @@ namespace do_an
             {
                 if (MessageBox.Show(string.Format("Bạn có chắc thanh toán cho {0}\nSố giờ: {5}\n( Tiền bàn - (Tiền bàn / 100) x giảm giá ) + Tiền đồ ăn\n==> ( {4} - ( {4} / 100) x {2} ) + {1} = {3} ", table.Name, totalPrice, discount, finalTotalPrice, tableprice, elapsedHours), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    BillDAO.Instance.checkout(idBill, discount);
+                    BillDAO.Instance.checkout(idBill, discount, (float)finalTotalPrice);
                     ShowBill(table.ID);
 
                     LoadTable();

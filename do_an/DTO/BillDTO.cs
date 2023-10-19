@@ -31,14 +31,12 @@ namespace do_an.DTO
         private DateTime? dateCheckin;
         private DateTime? dateCheckout;
         private int status;
-        private int totalprice;//chua dung toi
         private int discount;
 
         public int ID1 { get => ID; set => ID = value; }
         public DateTime? DateCheckin { get => dateCheckin; set => dateCheckin = value; }
         public DateTime? DateCheckout { get => dateCheckout; set => dateCheckout = value; }
         public int Status { get => status; set => status = value; }
-        public int Totalprice { get => totalprice; set => totalprice = value; }
         public int Discount { get => discount; set => discount = value; }
     }
 }
