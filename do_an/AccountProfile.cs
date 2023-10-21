@@ -1,4 +1,6 @@
-﻿using System;
+﻿using do_an.DAO;
+using do_an.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +14,77 @@ namespace do_an
 {
     public partial class AccountProfile : Form
     {
-        public AccountProfile()
+        private AccountDTO loginAccount;
+        public AccountDTO LoginAccount
+        {
+            get { return loginAccount; }
+            set { loginAccount = value; ChangeAccount(LoginAccount); }//ứng dụng tính đóng gói của lập trình hướng đối tượng
+        }
+        public AccountProfile(AccountDTO Acc)
         {
             InitializeComponent();
+            LoginAccount = Acc;
         }
+        void ChangeAccount(AccountDTO Acc)
+        {
+            txtUsername.Text = LoginAccount.Username;
+            txtDisplayName.Text = LoginAccount.Displayname;
+        }
+        void UpdateAccount()
+        {
+            string Username = txtUsername.Text;
+            string DisplayName = txtDisplayName.Text;
+            string Password = txtPassword.Text;
+            string NewPass = txtNewPass.Text;
 
+            if(NewPass.Equals(txtReEnterPass))
+            {
+                MessageBox.Show("Vui lòng nhập lại mật khẩu trùng với mật khẩu mới !!!");
+            }
+            else
+            {
+                if(AccountDAO.Instance.UpdateAccount(Username, DisplayName, Password, NewPass))
+                {
+                    MessageBox.Show("Cập nhật thành công !!!");
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng điền đúng mật khẩu");
+                }    
+            }
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateAccount();
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = false;
+        }
+        private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtNewPass.UseSystemPasswordChar = false;
+        }
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtNewPass.UseSystemPasswordChar = true;
+        }
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtReEnterPass.UseSystemPasswordChar = false;
+        }
+        private void pictureBox3_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtReEnterPass.UseSystemPasswordChar = true;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace do_an.DAO
         {
             List<CatagoryDTO> list = new List<CatagoryDTO>();
 
-            string query = "USP_Catagory";//chua proc
+            string query = "EXEC USP_Catagory";//chua proc
             DataTable data = Dataprovider.Instance.ExecuteQuery(query);
             foreach(DataRow item in data.Rows)
             {
@@ -32,6 +32,21 @@ namespace do_an.DAO
             }
 
             return list;
+        }
+        public CatagoryDTO GetCatagoryByID(int id)
+        {
+            CatagoryDTO catagory = null;
+           
+            //string query = "EXEC USP_CatagoryByID @idcatagory";
+            //DataTable data = Dataprovider.Instance.ExecuteQuery(query, new object[] { id });
+            string query = "SELECT* FROM FoodAndDrinkCatagory WHERE id = " + id;
+            DataTable data = Dataprovider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                catagory = new CatagoryDTO(item);
+                return catagory;
+            }
+            return catagory;
         }
     }
 }

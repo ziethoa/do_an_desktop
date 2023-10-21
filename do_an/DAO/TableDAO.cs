@@ -26,7 +26,7 @@ namespace do_an.DAO
         {
             List<TableDTO> TableList = new List<TableDTO>();
 
-            DataTable data = Dataprovider.Instance.ExecuteQuery("USP_GetTableList");
+            DataTable data = Dataprovider.Instance.ExecuteQuery("EXEC USP_GetTableList");
              foreach(DataRow item in data.Rows)
             {
                 TableDTO table = new TableDTO(item);

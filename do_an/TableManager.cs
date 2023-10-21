@@ -15,13 +15,26 @@ namespace do_an
 {
     public partial class TableManager : Form
     {
-        public TableManager()
+        private AccountDTO loginAccount;
+        public AccountDTO LoginAccount 
+        {
+            get { return loginAccount; }
+            set { loginAccount = value; ChangeAccount(loginAccount.Type); }//ứng dụng tính đóng gói của lập trình hướng đối tượng
+        }
+        public TableManager(AccountDTO Acc)
         {
             InitializeComponent();
+            this.LoginAccount = Acc;
             LoadTable();
             LoadCatagory();
         }
         private Stopwatch stopwatch = new Stopwatch();
+
+        void ChangeAccount(int Type)
+        {
+            adminToolStripMenuItem.Enabled = Type == 1;
+        }
+
         void LoadCatagory()
         {
             List<CatagoryDTO> ListCatagory = CatagoryDAO.Instance.GetListCatagory();
@@ -76,21 +89,23 @@ namespace do_an
         }
         private void btn_Click(object sender, EventArgs e)
         {
-            stopwatch.Start();
-            DateTime cutime = DateTime.Now;
-            txtTimeStart.Text = cutime.ToString();
             int TableID = ((sender as Button).Tag as TableDTO).ID;
             lsvBills.Tag = (sender as Button).Tag;
             ShowBill(TableID);
         }
-
+        private void btnTimeStart_Click(object sender, EventArgs e)
+        {
+            stopwatch.Start();
+            DateTime cutime = DateTime.Now;
+            txtTimeStart.Text = cutime.ToString();
+        }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AccountProfile f = new AccountProfile();
+            AccountProfile f = new AccountProfile(LoginAccount);
             f.ShowDialog();
         }
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,7 +146,6 @@ namespace do_an
 
             LoadTable();
         }
-
         private void btnAbate_Click(object sender, EventArgs e)
         {
             stopwatch.Stop();
@@ -146,21 +160,25 @@ namespace do_an
             int discount = (int)numDiscount.Value;
 
             float tableprice = elapsedHours * 70000;
-            double totalPrice = Convert.ToDouble(txtTotalPriceAll.Text.Split(',')[0]);
-            double finalTotalPrice = (tableprice - (tableprice/100 * discount)) + totalPrice;
-
-            if(idBill != -1)
+            float totalPrice = Convert.ToSingle(txtTotalPriceAll.Text.Split(',')[0]);
+            float finalTotalPrice = (tableprice - (tableprice/100 * discount)) + totalPrice;
+            string text = finalTotalPrice.ToString();
+            if (text.Contains(","))
             {
-                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán cho {0}\nSố giờ: {5}\n( Tiền bàn - (Tiền bàn / 100) x giảm giá ) + Tiền đồ ăn\n==> ( {4} - ( {4} / 100) x {2} ) + {1} = {3} ", table.Name, totalPrice, discount, finalTotalPrice, tableprice, elapsedHours), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                text = text.Replace(",", ".");
+                finalTotalPrice = float.Parse(text);
+            }
+
+            if (idBill != -1)
+            {
+                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán cho {0}\nSố giờ: {5}\n( Tiền bàn - (Tiền bàn / 100) x giảm giá ) + Tiền đồ ăn\n==> ( {4} - ( {4} / 100) x {2} ) + {1} = {3} ", table.Name, totalPrice, discount, text, tableprice, elapsedHours), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    BillDAO.Instance.checkout(idBill, discount, (float)finalTotalPrice);
+                    BillDAO.Instance.checkout(idBill, discount, text);
                     ShowBill(table.ID);
 
                     LoadTable();
                 }
             }
         }
-
-       
     }
 }

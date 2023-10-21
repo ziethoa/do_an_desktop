@@ -23,7 +23,7 @@ namespace do_an.DAO
         {
             List<MenuDTO> ListMenu = new List<MenuDTO>();
 
-            string query = "USP_BillInfos @IdTable  ";
+            string query = "EXEC USP_BillInfos @IdTable  ";
             DataTable data = Dataprovider.Instance.ExecuteQuery(query, new object[] { id});
             foreach (DataRow item in data.Rows)
             {

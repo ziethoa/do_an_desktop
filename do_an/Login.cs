@@ -1,4 +1,5 @@
 ﻿using do_an.DAO;
+using do_an.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,8 @@ namespace do_an
             //{
                 if (login(username, user_password))
                 {
-                    TableManager f = new TableManager();
+                    AccountDTO LoginAccount = AccountDAO.Instance.GetAccountByUserName(username);
+                    TableManager f = new TableManager(LoginAccount);
                     this.Hide();//ẩn form login
                     f.ShowDialog();
                     this.Show();//hiện file login

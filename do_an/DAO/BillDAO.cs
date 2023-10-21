@@ -31,15 +31,20 @@ namespace do_an.DAO
         }
         //thanh cong : bill id - that bai: -1
 
-        public void checkout(int id, int discount, float TotalPrice)
+        public void checkout(int id, int discount, string TotalPrice)
         {
-            string query = "UPDATE Bill SET ngayragiora = CAST (GETDATE() AS DATE ), tinhtrang = 1 " + ", giamgia = " + discount + ", tonggia = " + TotalPrice + " WHERE id = " + id;
+            string query = "UPDATE Bill SET ngayragiora = GETDATE() , tinhtrang = 1 " + " , giamgia = " + discount + " , tonggia = " + TotalPrice + " WHERE id = " + id;
             Dataprovider.Instance.ExecuteNonQuery(query);//ddang lam cho nay
         }
 
         public void InsertBill(int id)
         {
-            Dataprovider.Instance.ExecuteQuery("USP_InsertBill @idTable", new object[] { id });
+            Dataprovider.Instance.ExecuteQuery("EXEC USP_InsertBill @idTable", new object[] { id });
+        }
+
+        public DataTable GetBillListByDate(DateTime CheckIn, DateTime CheckOut)
+        {
+           return Dataprovider.Instance.ExecuteQuery("EXEC USP_GetListBillByDate @checkin , @checkout", new object[] { CheckIn , CheckOut});
         }
         public int GetMaxIdBill()
         {

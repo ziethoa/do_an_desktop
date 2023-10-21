@@ -120,7 +120,7 @@ GO
 
 EXEC USP_GetTableList 
 
-UPDATE TableBida SET tinhtrang = N'Có người' WHERE ten = N'Bàn 4'
+UPDATE TableBida SET tinhtrang = N'Trống' WHERE ten = N'Bàn 10'
 
 SELECT* FROM TableBida
 SELECT* FROM Bill
@@ -143,7 +143,7 @@ GO
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Táo', 1, 15000 )
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Ổi', 1, 15000 )
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thơm', 1, 15000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'xoài',1 ,15000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Xoài',1 ,15000) 
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Mận', 1, 15000)
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Khoai tây chiên', 2, 30000)
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Xiên que', 2, 30000)
@@ -223,6 +223,16 @@ GO
 EXEC USP_Catagory
 GO
 
+CREATE PROC USP_CatagoryByID
+@idcatagory int
+AS
+BEGIN
+	SELECT* FROM FoodAndDrinkCatagory WHERE id = @idcatagory
+END
+GO
+EXEC USP_CatagoryByID @idcatagory
+GO
+
 CREATE PROC USP_FoD
 @idcatagory int
 AS
@@ -233,14 +243,15 @@ GO
 EXEC USP_FoD @idcatagory 
 GO
 
+--CAST (GETDATE() AS DATE: chuyển datetime thành date
 CREATE PROC USP_InsertBill
 @idTable int
 AS
 BEGIN
-	INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia, giamgia) VALUES (GETDATE(), NULL, @idTable, 0, 0, 0)
+	INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia, giamgia) VALUES ( GETDATE(), NULL, @idTable, 0, 0, 0)
 END
 GO
-EXEC USP_InsertBill @idTable
+EXEC USP_InsertBill @idTable 
 GO
 
 CREATE PROC USP_InsertBillInfo
@@ -291,7 +302,7 @@ SELECT MAX(id) FROM Bill
 
 --them bot mon t-sql
 
-UPDATE Bill SET tinhtrang = 1 WHERE id = 1
+
 
 
 
@@ -307,7 +318,7 @@ BEGIN
 END
 GO
 
-ALTER TRIGGER UTG_UpdateBill
+CREATE TRIGGER UTG_UpdateBill
 ON Bill FOR UPDATE
 AS 
 BEGIN
@@ -322,9 +333,39 @@ BEGIN
 END
 GO
 
+CREATE PROC USP_GetListBillByDate
+@checkin DATE, @checkout DATE
+AS
+BEGIN
+	SELECT t.ten AS [Số Bàn], b.tonggia AS [Tổng tiền], b.ngayvaogiovao AS [Ngày giờ Checkin], b.ngayragiora AS [Ngày giờ Checkout], b.giamgia AS [Giảm giá]
+	FROM Bill as b, TableBida as t
+	WHERE b.ngayvaogiovao >= @checkin  AND b.ngayragiora <= @checkout AND b.tinhtrang = 1 AND t.id = b.idTable
+END
+GO
+EXEC USP_GetListBillByDate @checkin, @checkout
+
+CREATE PROC USP_UpdateAccount
+@username nvarchar(50), @displayname nvarchar(50), @password nvarchar(50), @newpassword nvarchar(50) 
+AS
+BEGIN
+	DECLARE @isRightPass INT
+	SELECT @isRightPass = COUNT(*) FROM Account WHERE tennguoidung = @username AND matkhau = @password
+	IF (@isRightPass = 1)
+		BEGIN
+			IF (@newpassword = NULL OR @newpassword = '')
+			BEGIN
+				UPDATE Account SET tenhienthi = @displayname WHERE tennguoidung = @username
+			END
+			ELSE
+				UPDATE Account SET tenhienthi = @displayname, matkhau = @password WHERE tennguoidung = @username
+		END
+END
+GO
+
 SELECT* FROM TableBida
 SELECT* FROM Bill
 SELECT* FROM BillInfo	
 SELECT* FROM FoodAndDrink
 SELECT* FROM FoodAndDrinkCatagory 
+SELECT* FROM Account
 GO

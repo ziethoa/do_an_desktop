@@ -44,7 +44,7 @@ namespace do_an
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pAbate = new System.Windows.Forms.Panel();
-            this.btnTimeFinish = new System.Windows.Forms.Button();
+            this.btnTimeStart = new System.Windows.Forms.Button();
             this.btnAbate = new System.Windows.Forms.Button();
             this.numDiscount = new System.Windows.Forms.NumericUpDown();
             this.txtTimeFinish = new System.Windows.Forms.TextBox();
@@ -184,7 +184,7 @@ namespace do_an
             // 
             // pAbate
             // 
-            this.pAbate.Controls.Add(this.btnTimeFinish);
+            this.pAbate.Controls.Add(this.btnTimeStart);
             this.pAbate.Controls.Add(this.btnAbate);
             this.pAbate.Controls.Add(this.numDiscount);
             this.pAbate.Controls.Add(this.txtTimeFinish);
@@ -197,15 +197,16 @@ namespace do_an
             this.pAbate.Size = new System.Drawing.Size(371, 197);
             this.pAbate.TabIndex = 3;
             // 
-            // btnTimeFinish
+            // btnTimeStart
             // 
-            this.btnTimeFinish.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnTimeFinish.Location = new System.Drawing.Point(91, 140);
-            this.btnTimeFinish.Name = "btnTimeFinish";
-            this.btnTimeFinish.Size = new System.Drawing.Size(107, 35);
-            this.btnTimeFinish.TabIndex = 12;
-            this.btnTimeFinish.Text = "Kết thúc";
-            this.btnTimeFinish.UseVisualStyleBackColor = true;
+            this.btnTimeStart.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnTimeStart.Location = new System.Drawing.Point(66, 140);
+            this.btnTimeStart.Name = "btnTimeStart";
+            this.btnTimeStart.Size = new System.Drawing.Size(132, 35);
+            this.btnTimeStart.TabIndex = 12;
+            this.btnTimeStart.Text = "Bắt đầu tính giờ";
+            this.btnTimeStart.UseVisualStyleBackColor = true;
+            this.btnTimeStart.Click += new System.EventHandler(this.btnTimeStart_Click);
             // 
             // btnAbate
             // 
@@ -484,7 +485,7 @@ namespace do_an
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnAbate;
-        private System.Windows.Forms.Button btnTimeFinish;
+        private System.Windows.Forms.Button btnTimeStart;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.ListView lsvBills;
         private System.Windows.Forms.ColumnHeader columnHeader1;
