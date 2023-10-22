@@ -350,11 +350,11 @@ END
 GO
 EXEC USP_GetListBillByDate @checkin, @checkout
 
-CREATE PROC USP_UpdateAccount
+ALTER PROC USP_UpdateAccount
 @username nvarchar(50), @displayname nvarchar(50), @password nvarchar(50), @newpassword nvarchar(50) 
 AS
 BEGIN
-	DECLARE @isRightPass INT
+	DECLARE @isRightPass INT = 0 
 	SELECT @isRightPass = COUNT(*) FROM Account WHERE tennguoidung = @username AND matkhau = @password
 	IF (@isRightPass = 1)
 		BEGIN
@@ -363,9 +363,11 @@ BEGIN
 				UPDATE Account SET tenhienthi = @displayname WHERE tennguoidung = @username
 			END
 			ELSE
-				UPDATE Account SET tenhienthi = @displayname, matkhau = @password WHERE tennguoidung = @username
+				UPDATE Account SET tenhienthi = @displayname, matkhau = @newpassword WHERE tennguoidung = @username
 		END
 END
+GO
+EXEC USP_UpdateAccount @username = N'hoa' , @displayname = N'Nguyễn Viết Hoá' , @password = N'0' , @newpassword = N'1234'
 GO
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES ( N'', 0 , 0.0)	
 
