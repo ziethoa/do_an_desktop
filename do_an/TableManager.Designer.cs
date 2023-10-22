@@ -334,11 +334,6 @@ namespace do_an
             this.FoodAndDrinkCount.Size = new System.Drawing.Size(74, 22);
             this.FoodAndDrinkCount.TabIndex = 4;
             this.FoodAndDrinkCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FoodAndDrinkCount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // btnAddFoodOrDrink
             // 

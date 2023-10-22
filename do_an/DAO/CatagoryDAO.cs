@@ -36,11 +36,11 @@ namespace do_an.DAO
         public CatagoryDTO GetCatagoryByID(int id)
         {
             CatagoryDTO catagory = null;
-           
-            //string query = "EXEC USP_CatagoryByID @idcatagory";
-            //DataTable data = Dataprovider.Instance.ExecuteQuery(query, new object[] { id });
-            string query = "SELECT* FROM FoodAndDrinkCatagory WHERE id = " + id;
-            DataTable data = Dataprovider.Instance.ExecuteQuery(query);
+
+            string query = "EXEC USP_CatagoryByID @idcatagory";
+            DataTable data = Dataprovider.Instance.ExecuteQuery(query, new object[] { id });
+            //string query = "SELECT* FROM FoodAndDrinkCatagory WHERE id = " + id;
+            //DataTable data = Dataprovider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
                 catagory = new CatagoryDTO(item);

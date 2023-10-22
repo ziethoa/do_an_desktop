@@ -129,6 +129,7 @@ SELECT* FROM FoodAndDrink
 SELECT* FROM FoodAndDrinkCatagory 
 GO
 --thêm food catagory
+INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'-None-' )
 INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'Trái cây' )
 INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'Ăn Vặt' )
 INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'Mì' )
@@ -140,42 +141,47 @@ INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'Bia' )
 INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'Thuốc lá' )
 GO
 --thêm món ăn
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Táo', 1, 15000 )
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Ổi', 1, 15000 )
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thơm', 1, 15000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Xoài',1 ,15000) 
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Mận', 1, 15000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Khoai tây chiên', 2, 30000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Xiên que', 2, 30000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Snack', 2, 15000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Bắp xào', 2, 20000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Mì xào bò', 3, 40000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Mì xào hải sản', 3, 40000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Cơm chiên dương châu', 4, 35000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Cơm gà', 4, 35000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'-None-', 1, 0 )
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Táo', 2, 15000 )
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Ổi', 2, 15000 )
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thơm', 2, 15000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Xoài',2 ,15000) 
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Mận', 2, 15000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Khoai tây chiên', 3, 30000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Xiên que', 3, 30000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Snack', 3, 15000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Bắp xào', 3, 20000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Mì xào bò', 4, 40000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Mì xào hải sản', 4, 40000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Cơm chiên dương châu', 5, 35000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Cơm gà', 5, 35000)
 GO
 --thêm đồ uống
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Sting', 5, 10000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'7up', 5, 10000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Pepsi/Coca', 5, 10000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Redbull', 5, 10000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Trà xanh không độ', 5, 10000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Cafe', 5, 15000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Aquafina', 5, 7000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Bia 333', 6, 15000) 
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Bia Tiger', 6, 15000)
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Ba số bạc', 7, 30000) 
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Sài gòn bạc', 7, 30000) 
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Con mèo', 7, 30000) 
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Con ngựa', 7, 30000) 
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Sting', 6, 10000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'7up', 6, 10000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Pepsi/Coca', 6, 10000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Redbull', 6, 10000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Trà xanh không độ', 6, 10000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Cafe', 6, 15000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Aquafina', 6, 7000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Bia 333', 7, 15000) 
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Bia Tiger', 7, 15000)
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Ba số bạc', 8, 30000) 
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Sài gòn bạc', 8, 30000) 
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Con mèo', 8, 30000) 
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Con ngựa', 8, 30000) 
 GO
 --reset id identity
 DELETE FROM TableBida
 DELETE FROM Bill
 DELETE FROM BillInfo 
+DELETE FROM FoodAndDrink
+DELETE FROM FoodAndDrinkCatagory
 DBCC CHECKIDENT(TableBida, RESEED, 0)
 DBCC CHECKIDENT(Bill, RESEED, 0)
 DBCC CHECKIDENT(BillInfo, RESEED, 0)
+DBCC CHECKIDENT(FoodAndDrink, RESEED, 0)
+DBCC CHECKIDENT(FoodAndDrinkCatagory, RESEED, 0)
 GO
 --bill
 INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 4, 1, 0)
@@ -361,6 +367,9 @@ BEGIN
 		END
 END
 GO
+INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES ( N'', 0 , 0.0)	
+
+UPDATE FoodAndDrink SET tenhienthi = N'', idCatagory = 0, gia = 0 WHERE id = 3
 
 SELECT* FROM TableBida
 SELECT* FROM Bill
@@ -368,4 +377,5 @@ SELECT* FROM BillInfo
 SELECT* FROM FoodAndDrink
 SELECT* FROM FoodAndDrinkCatagory 
 SELECT* FROM Account
+SELECT tenhienthi AS N'Displayname', tennguoidung AS N'Username' FROM Account
 GO

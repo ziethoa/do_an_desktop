@@ -111,6 +111,7 @@ namespace do_an
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Admin f = new Admin();
+            f.loginAccount = loginAccount;
             f.ShowDialog();
         }
 

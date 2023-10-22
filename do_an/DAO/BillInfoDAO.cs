@@ -38,5 +38,9 @@ namespace do_an.DAO
         {
                 Dataprovider.Instance.ExecuteNonQuery("USP_InsertBillInfo @idBill , @idFoD , @count " , new object[] { idBill, idFoD, Count });
         }
+        public void DeleteBillInfoByFoodID(int id)
+        {
+            Dataprovider.Instance.ExecuteQuery("DELETE BillInfo WHERE idFoodOrDrink = " + id);
+        }
     }
 }
