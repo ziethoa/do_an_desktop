@@ -249,5 +249,10 @@ namespace do_an
             }
             LoadAccount();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace do_an
                 }
                 else
                 {
-                    btn.BackColor = Color.LightPink;
+                    btn.BackColor = Color.LightSalmon;
                 }
                 btn.ForeColor = Color.Black;
                 flpTable.Controls.Add(btn);

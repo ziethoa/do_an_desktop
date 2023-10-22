@@ -29,10 +29,12 @@ namespace do_an
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.tpAccount = new System.Windows.Forms.TabPage();
             this.panel37 = new System.Windows.Forms.Panel();
             this.btnResetPass = new System.Windows.Forms.Button();
             this.panel39 = new System.Windows.Forms.Panel();
+            this.nmrAccountType = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
             this.panel40 = new System.Windows.Forms.Panel();
             this.txtDisplayName = new System.Windows.Forms.TextBox();
@@ -82,10 +84,10 @@ namespace do_an
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtgvBill = new System.Windows.Forms.DataGridView();
             this.tcAdmin = new System.Windows.Forms.TabControl();
-            this.nmrAccountType = new System.Windows.Forms.NumericUpDown();
             this.tpAccount.SuspendLayout();
             this.panel37.SuspendLayout();
             this.panel39.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrAccountType)).BeginInit();
             this.panel40.SuspendLayout();
             this.panel41.SuspendLayout();
             this.panel42.SuspendLayout();
@@ -107,11 +109,11 @@ namespace do_an
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.tcAdmin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmrAccountType)).BeginInit();
             this.SuspendLayout();
             // 
             // tpAccount
             // 
+            this.tpAccount.BackColor = System.Drawing.Color.DarkSlateGray;
             this.tpAccount.Controls.Add(this.panel37);
             this.tpAccount.Controls.Add(this.panel42);
             this.tpAccount.Controls.Add(this.panel43);
@@ -121,7 +123,6 @@ namespace do_an
             this.tpAccount.Size = new System.Drawing.Size(738, 404);
             this.tpAccount.TabIndex = 6;
             this.tpAccount.Text = "Tài khoản";
-            this.tpAccount.UseVisualStyleBackColor = true;
             // 
             // panel37
             // 
@@ -136,9 +137,10 @@ namespace do_an
             // 
             // btnResetPass
             // 
+            this.btnResetPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnResetPass.Location = new System.Drawing.Point(180, 144);
             this.btnResetPass.Name = "btnResetPass";
-            this.btnResetPass.Size = new System.Drawing.Size(145, 49);
+            this.btnResetPass.Size = new System.Drawing.Size(160, 36);
             this.btnResetPass.TabIndex = 4;
             this.btnResetPass.Text = "Đặt lại mật khẩu";
             this.btnResetPass.UseVisualStyleBackColor = true;
@@ -153,10 +155,23 @@ namespace do_an
             this.panel39.Size = new System.Drawing.Size(358, 42);
             this.panel39.TabIndex = 6;
             // 
+            // nmrAccountType
+            // 
+            this.nmrAccountType.Location = new System.Drawing.Point(160, 8);
+            this.nmrAccountType.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrAccountType.Name = "nmrAccountType";
+            this.nmrAccountType.Size = new System.Drawing.Size(50, 22);
+            this.nmrAccountType.TabIndex = 1;
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label20.Location = new System.Drawing.Point(3, 11);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(133, 20);
@@ -183,6 +198,7 @@ namespace do_an
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label21.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label21.Location = new System.Drawing.Point(3, 11);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(114, 20);
@@ -209,6 +225,7 @@ namespace do_an
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label22.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label22.Location = new System.Drawing.Point(3, 11);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(128, 20);
@@ -228,6 +245,7 @@ namespace do_an
             // 
             // btnShowAccount
             // 
+            this.btnShowAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnShowAccount.Location = new System.Drawing.Point(270, 3);
             this.btnShowAccount.Name = "btnShowAccount";
             this.btnShowAccount.Size = new System.Drawing.Size(83, 49);
@@ -238,6 +256,7 @@ namespace do_an
             // 
             // btnEditAccount
             // 
+            this.btnEditAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnEditAccount.Location = new System.Drawing.Point(181, 3);
             this.btnEditAccount.Name = "btnEditAccount";
             this.btnEditAccount.Size = new System.Drawing.Size(83, 49);
@@ -248,6 +267,7 @@ namespace do_an
             // 
             // btnDeleteAccount
             // 
+            this.btnDeleteAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDeleteAccount.Location = new System.Drawing.Point(92, 3);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(83, 49);
@@ -258,6 +278,7 @@ namespace do_an
             // 
             // btnAddAccount
             // 
+            this.btnAddAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnAddAccount.Location = new System.Drawing.Point(3, 3);
             this.btnAddAccount.Name = "btnAddAccount";
             this.btnAddAccount.Size = new System.Drawing.Size(83, 49);
@@ -287,6 +308,7 @@ namespace do_an
             // 
             // tpFood
             // 
+            this.tpFood.BackColor = System.Drawing.Color.DarkSlateGray;
             this.tpFood.Controls.Add(this.panel6);
             this.tpFood.Controls.Add(this.panel5);
             this.tpFood.Controls.Add(this.panel4);
@@ -297,7 +319,6 @@ namespace do_an
             this.tpFood.Size = new System.Drawing.Size(738, 404);
             this.tpFood.TabIndex = 1;
             this.tpFood.Text = "Thức ăn và Đồ uống";
-            this.tpFood.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -317,6 +338,7 @@ namespace do_an
             // 
             // btnFindFood
             // 
+            this.btnFindFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnFindFood.Location = new System.Drawing.Point(246, 3);
             this.btnFindFood.Name = "btnFindFood";
             this.btnFindFood.Size = new System.Drawing.Size(83, 49);
@@ -366,6 +388,7 @@ namespace do_an
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label6.Location = new System.Drawing.Point(3, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 20);
@@ -393,6 +416,7 @@ namespace do_an
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(3, 11);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
@@ -419,6 +443,7 @@ namespace do_an
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(3, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 20);
@@ -447,6 +472,7 @@ namespace do_an
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(3, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 20);
@@ -466,6 +492,7 @@ namespace do_an
             // 
             // btnShowFood
             // 
+            this.btnShowFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnShowFood.Location = new System.Drawing.Point(270, 3);
             this.btnShowFood.Name = "btnShowFood";
             this.btnShowFood.Size = new System.Drawing.Size(83, 49);
@@ -476,6 +503,7 @@ namespace do_an
             // 
             // btnEditFood
             // 
+            this.btnEditFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnEditFood.Location = new System.Drawing.Point(181, 3);
             this.btnEditFood.Name = "btnEditFood";
             this.btnEditFood.Size = new System.Drawing.Size(83, 49);
@@ -486,6 +514,7 @@ namespace do_an
             // 
             // btnDeleteFood
             // 
+            this.btnDeleteFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDeleteFood.Location = new System.Drawing.Point(92, 3);
             this.btnDeleteFood.Name = "btnDeleteFood";
             this.btnDeleteFood.Size = new System.Drawing.Size(83, 49);
@@ -496,6 +525,7 @@ namespace do_an
             // 
             // btnAddFood
             // 
+            this.btnAddFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnAddFood.Location = new System.Drawing.Point(3, 3);
             this.btnAddFood.Name = "btnAddFood";
             this.btnAddFood.Size = new System.Drawing.Size(83, 49);
@@ -525,6 +555,7 @@ namespace do_an
             // 
             // tpBill
             // 
+            this.tpBill.BackColor = System.Drawing.Color.DarkSlateGray;
             this.tpBill.Controls.Add(this.panel2);
             this.tpBill.Controls.Add(this.panel1);
             this.tpBill.Location = new System.Drawing.Point(4, 25);
@@ -533,7 +564,6 @@ namespace do_an
             this.tpBill.Size = new System.Drawing.Size(738, 404);
             this.tpBill.TabIndex = 0;
             this.tpBill.Text = "Doanh thu";
-            this.tpBill.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -545,22 +575,25 @@ namespace do_an
             this.panel2.Controls.Add(this.dtpkFromDate);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(687, 62);
+            this.panel2.Size = new System.Drawing.Size(687, 72);
             this.panel2.TabIndex = 0;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(446, 28);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnExit.Location = new System.Drawing.Point(446, 34);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(99, 23);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 34);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(18, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 17);
             this.label2.TabIndex = 4;
@@ -569,6 +602,7 @@ namespace do_an
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(18, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 17);
@@ -577,9 +611,10 @@ namespace do_an
             // 
             // btnViewBill
             // 
+            this.btnViewBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnViewBill.Location = new System.Drawing.Point(446, 3);
             this.btnViewBill.Name = "btnViewBill";
-            this.btnViewBill.Size = new System.Drawing.Size(99, 23);
+            this.btnViewBill.Size = new System.Drawing.Size(99, 25);
             this.btnViewBill.TabIndex = 2;
             this.btnViewBill.Text = "Thống kê";
             this.btnViewBill.UseVisualStyleBackColor = true;
@@ -589,7 +624,7 @@ namespace do_an
             // 
             this.dtpkToDate.CustomFormat = "dd/MM/yyyy";
             this.dtpkToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpkToDate.Location = new System.Drawing.Point(126, 32);
+            this.dtpkToDate.Location = new System.Drawing.Point(126, 35);
             this.dtpkToDate.Name = "dtpkToDate";
             this.dtpkToDate.Size = new System.Drawing.Size(125, 22);
             this.dtpkToDate.TabIndex = 1;
@@ -633,24 +668,14 @@ namespace do_an
             this.tcAdmin.Size = new System.Drawing.Size(746, 433);
             this.tcAdmin.TabIndex = 0;
             // 
-            // nmrAccountType
-            // 
-            this.nmrAccountType.Location = new System.Drawing.Point(160, 8);
-            this.nmrAccountType.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmrAccountType.Name = "nmrAccountType";
-            this.nmrAccountType.Size = new System.Drawing.Size(50, 22);
-            this.nmrAccountType.TabIndex = 1;
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(771, 450);
             this.Controls.Add(this.tcAdmin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
@@ -658,6 +683,7 @@ namespace do_an
             this.panel37.ResumeLayout(false);
             this.panel39.ResumeLayout(false);
             this.panel39.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrAccountType)).EndInit();
             this.panel40.ResumeLayout(false);
             this.panel40.PerformLayout();
             this.panel41.ResumeLayout(false);
@@ -687,7 +713,6 @@ namespace do_an
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.tcAdmin.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nmrAccountType)).EndInit();
             this.ResumeLayout(false);
 
         }

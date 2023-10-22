@@ -61,30 +61,5 @@ namespace do_an
         {
             this.Close();
         }
-
-        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtPassword.UseSystemPasswordChar = false;
-        }
-        private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtPassword.UseSystemPasswordChar = true;
-        }
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtNewPass.UseSystemPasswordChar = false;
-        }
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtNewPass.UseSystemPasswordChar = true;
-        }
-        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtReEnterPass.UseSystemPasswordChar = false;
-        }
-        private void pictureBox3_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtReEnterPass.UseSystemPasswordChar = true;
-        }
     }
 }

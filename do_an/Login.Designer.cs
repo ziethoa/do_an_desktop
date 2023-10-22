@@ -84,7 +84,6 @@ namespace do_an
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(207, 22);
             this.txtPassword.TabIndex = 2;
-            this.txtPassword.Text = "admin";
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label2
@@ -103,7 +102,6 @@ namespace do_an
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(207, 22);
             this.txtUsername.TabIndex = 1;
-            this.txtUsername.Text = "admin";
             // 
             // label1
             // 
