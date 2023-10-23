@@ -63,6 +63,7 @@ namespace do_an
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBill = new System.Windows.Forms.Button();
             this.txtTotalPriceAll = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -86,7 +87,7 @@ namespace do_an
             this.thôngTinTàiKhoảnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1384, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1384, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,7 +99,7 @@ namespace do_an
             this.homeToolStripMenuItem.Image = global::do_an.Properties.Resources.kisspng_house_real_estate_home_building_dormitory_5b4663123fd570_4975341015313395382615;
             this.homeToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
             this.homeToolStripMenuItem.Text = "Home";
             this.homeToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
@@ -337,6 +338,11 @@ namespace do_an
             this.FoodAndDrinkCount.Size = new System.Drawing.Size(74, 22);
             this.FoodAndDrinkCount.TabIndex = 4;
             this.FoodAndDrinkCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FoodAndDrinkCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnAddFoodOrDrink
             // 
@@ -394,6 +400,7 @@ namespace do_an
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnBill);
             this.panel1.Controls.Add(this.txtTotalPriceAll);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(979, 40);
@@ -401,10 +408,22 @@ namespace do_an
             this.panel1.Size = new System.Drawing.Size(371, 91);
             this.panel1.TabIndex = 7;
             // 
+            // btnBill
+            // 
+            this.btnBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnBill.ForeColor = System.Drawing.Color.Black;
+            this.btnBill.Location = new System.Drawing.Point(229, 44);
+            this.btnBill.Name = "btnBill";
+            this.btnBill.Size = new System.Drawing.Size(121, 30);
+            this.btnBill.TabIndex = 9;
+            this.btnBill.Text = "Xem bill";
+            this.btnBill.UseVisualStyleBackColor = true;
+            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
+            // 
             // txtTotalPriceAll
             // 
             this.txtTotalPriceAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTotalPriceAll.Location = new System.Drawing.Point(118, 43);
+            this.txtTotalPriceAll.Location = new System.Drawing.Point(45, 44);
             this.txtTotalPriceAll.Name = "txtTotalPriceAll";
             this.txtTotalPriceAll.ReadOnly = true;
             this.txtTotalPriceAll.Size = new System.Drawing.Size(147, 30);
@@ -417,7 +436,7 @@ namespace do_an
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(145, 9);
+            this.label4.Location = new System.Drawing.Point(62, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 20);
             this.label4.TabIndex = 7;
@@ -495,5 +514,6 @@ namespace do_an
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtTotalPriceAll;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnBill;
     }
 }

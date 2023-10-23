@@ -66,7 +66,7 @@ namespace do_an
                 {
                     btn.BackColor = Color.LightSalmon;
                 }
-                btn.ForeColor = Color.Black;
+                btn.ForeColor = Color.Black;    
                 flpTable.Controls.Add(btn);
                 
             }
@@ -86,6 +86,15 @@ namespace do_an
                 lsvBills.Items.Add(lsvItem);
             }
             txtTotalPriceAll.Text = TotalPriceAll.ToString("c");
+        }
+        void resetForm()
+        {
+            cbCatagoryFoodOrDrink.Text = "-None-";
+            cbFoodOrDrink.Text = "-None-";
+            FoodAndDrinkCount.Value = 1;
+            txtTimeStart.Text = " ";
+            txtTimeFinish.Text = " ";
+            numDiscount.Value = 0;
         }
         private void btn_Click(object sender, EventArgs e)
         {
@@ -178,8 +187,14 @@ namespace do_an
                     ShowBill(table.ID);
 
                     LoadTable();
+                    resetForm();
                 }
             }
+        }
+
+        private void btnBill_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

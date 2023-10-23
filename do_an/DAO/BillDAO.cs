@@ -29,6 +29,20 @@ namespace do_an.DAO
             }
             return -1;
         }
+        public List<BillDTO> GetListBillByTableID(int id)//id cua bill
+        {
+            List<BillDTO> listBill = new List<BillDTO>();
+
+            DataTable data = Dataprovider.Instance.ExecuteQuery("SELECT* FROM Bill WHERE id = " + id);
+
+            foreach (DataRow item in data.Rows)
+            {
+                BillDTO info = new BillDTO(item);
+                listBill.Add(info);
+            }
+
+            return listBill;
+        }
         //thanh cong : bill id - that bai: -1
 
         public void checkout(int id, int discount, string TotalPrice)
