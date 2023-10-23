@@ -55,7 +55,7 @@ CREATE TABLE Bill
 	ngayragiora DATETIME ,
 	idTable INT NOT NULL,
 	tinhtrang INT NOT NULL DEFAULT 0, -- 1: da thanh toan, 0: chua thanh toan
-	tonggia INT NOT NULL,
+	tonggia FLOAT NOT NULL,
 	giamgia INT DEFAULT 0
 	FOREIGN KEY (idTable) REFERENCES dbo.TableBida(id)
 )
