@@ -36,7 +36,6 @@ CREATE TABLE FoodAndDrinkCatagory
 	tenhienthi NVARCHAR (100)NOT NULL DEFAULT N'Chua dat ten'
 )
 GO
-DROP TABLE FoodCatagory
 
 CREATE TABLE FoodAndDrink
 (
@@ -56,14 +55,11 @@ CREATE TABLE Bill
 	ngayragiora DATETIME ,
 	idTable INT NOT NULL,
 	tinhtrang INT NOT NULL DEFAULT 0, -- 1: da thanh toan, 0: chua thanh toan
-	tonggia INT NOT NULL
-
+	tonggia INT NOT NULL,
+	giamgia INT DEFAULT 0
 	FOREIGN KEY (idTable) REFERENCES dbo.TableBida(id)
 )
 GO
-ALTER TABLE Bill
-ADD giamgia int
-UPDATE Bill SET giamgia = 0
 
 CREATE TABLE BillInfo
 (
@@ -77,8 +73,6 @@ CREATE TABLE BillInfo
 )
 GO
 
-DROP TABLE Bill
-
 CREATE PROC USP_GetAccountByUserName-- thủ tục lưu trữ được dùng để thực hiện một xử lí nhắt định(bảo mất cao)
 @userName nvarchar (100)
 AS
@@ -86,8 +80,6 @@ BEGIN
 	SELECT* FROM Account WHERE tennguoidung = @userName
 END
 GO
-
-EXEC USP_GetAccountByUserName @userName = 'dat'
 
 CREATE PROC USP_Login 
 @userName nvarchar (100), 
@@ -97,6 +89,9 @@ BEGIN
 	SELECT* FROM Account WHERE tennguoidung = @userName AND matkhau = @passWord
 END
 GO
+--thêm account
+INSERT INTO Account( tennguoidung, tenhienthi, matkhau, loaitaikhoan) VALUES ( N'admin', N'admin', 1, 1)
+INSERT INTO Account( tennguoidung, tenhienthi, matkhau, loaitaikhoan) VALUES ( N'staff', N'staff', 1, 0)
 --thêm bàn
 INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 1', N'Trống', '70000')
 INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 2', N'Trống', '70000')
@@ -112,22 +107,10 @@ INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 11', N'Trống', '
 INSERT INTO TableBida ( ten, tinhtrang, gia ) VALUES ( N'Bàn 12', N'Trống', '70000')
 GO
 
-SELECT* FROM TableBida
-
 CREATE PROC USP_GetTableList
 AS SELECT* FROM TableBida
 GO
 
-EXEC USP_GetTableList 
-
-UPDATE TableBida SET tinhtrang = N'Trống' WHERE ten = N'Bàn 10'
-
-SELECT* FROM TableBida
-SELECT* FROM Bill
-SELECT* FROM BillInfo	
-SELECT* FROM FoodAndDrink
-SELECT* FROM FoodAndDrinkCatagory 
-GO
 --thêm food catagory
 INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'-None-' )
 INSERT INTO FoodAndDrinkCatagory ( tenhienthi ) VALUES ( N'Trái cây' )
@@ -171,30 +154,6 @@ INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Sà
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Con mèo', 8, 30000) 
 INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES (N'Thuốc lá Con ngựa', 8, 30000) 
 GO
---reset id identity
-DELETE FROM TableBida
-DELETE FROM Bill
-DELETE FROM BillInfo 
-DELETE FROM FoodAndDrink
-DELETE FROM FoodAndDrinkCatagory
-DBCC CHECKIDENT(TableBida, RESEED, 0)
-DBCC CHECKIDENT(Bill, RESEED, 0)
-DBCC CHECKIDENT(BillInfo, RESEED, 0)
-DBCC CHECKIDENT(FoodAndDrink, RESEED, 0)
-DBCC CHECKIDENT(FoodAndDrinkCatagory, RESEED, 0)
-GO
---bill
-INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 4, 1, 0)
-INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 6, 1, 0)
-INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), GETDATE(), 9, 1, 0)
-INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia) VALUES (GETDATE(), NULL, 7, 0, 0)
-GO
---bill info 
-INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (2, 4, 4)
-INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (3, 14, 2)
-INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (2, 9, 3)
-INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (1, 7, 3)
-GO
 
 CREATE PROC USP_Bills--da them vao vs
 @IdTable int 
@@ -202,8 +161,6 @@ AS
 BEGIN
 	SELECT* FROM Bill WHERE idTable = @IdTable AND tinhtrang = 1
 END
-GO
-EXEC USP_Bills @IdTable = 7
 GO
 
 CREATE PROC USP_BillInfos
@@ -214,20 +171,12 @@ BEGIN
 	WHERE BillInfo.idBill = Bill.id AND BillInfo.idFoodOrDrink = FoodAndDrink.id AND Bill.tinhtrang = 0 AND Bill.idTable = @IdTable
 END
 GO
-EXEC USP_BillInfos @IdTable 
-GO
-
-SELECT* FROM Bill WHERE idTable = 4 AND tinhtrang = 1
-SELECT FoodAndDrink.tenhienthi, BillInfo.count, FoodAndDrink.gia, BillInfo.count*FoodAndDrink.gia AS 'Tonggia'FROM BillInfo, Bill, FoodAndDrink 
-WHERE BillInfo.idBill = Bill.id AND BillInfo.idFoodOrDrink = FoodAndDrink.id AND Bill.idTable = 4
-GO
 
 CREATE PROC USP_Catagory
 AS
 	SELECT* FROM FoodAndDrinkCatagory
 GO
-EXEC USP_Catagory
-GO
+
 
 CREATE PROC USP_CatagoryByID
 @idcatagory int
@@ -236,8 +185,7 @@ BEGIN
 	SELECT* FROM FoodAndDrinkCatagory WHERE id = @idcatagory
 END
 GO
-EXEC USP_CatagoryByID @idcatagory
-GO
+
 
 CREATE PROC USP_FoD
 @idcatagory int
@@ -246,8 +194,7 @@ BEGIN
 	SELECT* FROM FoodAndDrink WHERE idCatagory = @idcatagory
 END
 GO
-EXEC USP_FoD @idcatagory 
-GO
+
 
 --CAST (GETDATE() AS DATE: chuyển datetime thành date
 CREATE PROC USP_InsertBill
@@ -257,24 +204,9 @@ BEGIN
 	INSERT INTO Bill (ngayvaogiovao, ngayragiora, idTable, tinhtrang, tonggia, giamgia) VALUES ( GETDATE(), NULL, @idTable, 0, 0, 0)
 END
 GO
-EXEC USP_InsertBill @idTable 
-GO
-
-CREATE PROC USP_InsertBillInfo
-@idBill int,
-@idFoD int,
-@count int
-AS
-BEGIN
-	INSERT INTO BillInfo (idBill, idFoodOrDrink, count) VALUES (@idBill, @idFoD, @count)
-END
-GO
-
-EXEC USP_InsertBillInfo @idBill = 2 , @idFoD = 1 , @count = 1
-GO
 
 --sửa proc
-ALTER PROC USP_InsertBillInfo
+CREATE PROC USP_InsertBillInfo
 @idBill int,
 @idFoD int,
 @count int
@@ -299,18 +231,6 @@ BEGIN
 	END
 END
 GO
-
-SELECT* FROM Bill WHERE idTable = 1 AND tinhtrang = 0
-
-SELECT id,count FROM BillInfo WHERE idBill = 5 
-
-SELECT MAX(id) FROM Bill
-
---them bot mon t-sql
-
-
-
-
 
 CREATE TRIGGER UTG_UpdateBillInfo
 ON BillInfo FOR INSERT, UPDATE
@@ -348,9 +268,9 @@ BEGIN
 	WHERE b.ngayvaogiovao >= @checkin  AND b.ngayragiora <= @checkout AND b.tinhtrang = 1 AND t.id = b.idTable
 END
 GO
-EXEC USP_GetListBillByDate @checkin, @checkout
 
-ALTER PROC USP_UpdateAccount
+
+CREATE PROC USP_UpdateAccount
 @username nvarchar(50), @displayname nvarchar(50), @password nvarchar(50), @newpassword nvarchar(50) 
 AS
 BEGIN
@@ -367,17 +287,4 @@ BEGIN
 		END
 END
 GO
-EXEC USP_UpdateAccount @username = N'hoa' , @displayname = N'Nguyễn Viết Hoá' , @password = N'0' , @newpassword = N'1234'
-GO
-INSERT INTO FoodAndDrink (tenhienthi, idCatagory, gia) VALUES ( N'', 0 , 0.0)	
 
-UPDATE FoodAndDrink SET tenhienthi = N'', idCatagory = 0, gia = 0 WHERE id = 3
-
-SELECT* FROM TableBida
-SELECT* FROM Bill
-SELECT* FROM BillInfo	
-SELECT* FROM FoodAndDrink
-SELECT* FROM FoodAndDrinkCatagory 
-SELECT* FROM Account
-SELECT tenhienthi AS N'Displayname', tennguoidung AS N'Username' FROM Account
-GO
